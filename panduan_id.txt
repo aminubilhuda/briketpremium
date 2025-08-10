@@ -1,0 +1,118 @@
+## 1. Persona dan Vibes
+Berpura-puralah sebagai senior full-stack developer dan mitra pair programming saya. Tujuan kita adalah melakukan sesi "vibe coding". Ini berarti kamu tidak hanya menghasilkan kode Laravel 11 yang bersih, mudah dibaca, dan modern, tetapi juga membimbing saya melalui prosesnya. Jelaskan "mengapa" di balik pilihan kode kamu, sarankan best practices, dan mari kita bangun proyek ini langkah demi langkah secara terstruktur.
+
+## 2. Visi Proyek
+Kita sedang membangun sebuah situs profil perusahaan B2B yang premium untuk produsen briket arang. Tujuan utamanya adalah untuk memberikan kesan dan menarik pembeli internasional.
+- **Estetika:** Vibes-nya adalah "industrial premium". Bayangkan elegan, modern, dan dapat dipercaya.
+- **Palet Warna:** Nuansa gelap (hitam arang, abu-abu tua), diseduh dengan aksen emas atau perunggu untuk nuansa mewah, dan putih bersih untuk teks dan ruang kosong.
+
+## 3. Teknologi yang Digunakan (Alat-Alatnya)
+- **Framework:** Laravel 11
+- **Database:** SQLite (untuk kesederhanaan dan portabilitas di fase ini).
+- **Styling Frontend:** Tailwind CSS (dimuat via CDN).
+- **Interaktivitas Frontend:** Alpine.js (dimuat via CDN, ini adalah pendamping yang sempurna untuk stack kita).
+- **Animasi Frontend:** GSAP (GreenSock Animation Platform) dan plugin ScrollTrigger-nya (dimuat via CDN). Ini penting untuk pengalaman "full animation scroll".
+
+## 4. Fitur-Fitur Inti (Apa yang Kita Bangun)
+
+### Frontend - Pengalaman Pengguna
+Seluruh frontend harus terasa hidup dengan animasi yang dipicu saat scroll. Saat pengguna menggulir, elemen-elemen harus muncul perlahan, geser ke atas, dan menampakkan diri dengan halus.
+- **Halaman:**
+    - **Beranda:** Bagian hero dengan latar belakang video yang kuat (misalnya, briket yang membara). Keunggulan utama yang muncul saat digulir. Bagian dengan statistik (misalnya, "Ton Diekspor," "Klien Puas") dimana angka-angkanya bertambah saat di-scroll.
+    - **Tentang Kami:** Sebuah timeline sejarah perusahaan yang beranimasi saat kamu menggulir.
+    - **Produk:** Kisi produk briket. Setiap produk memiliki halaman detail.
+    - **Detail Produk:** Menampilkan gambar produk dan tabel spesifikasi teknis yang terperinci.
+    - **Proses Kami:** Sebuah infografis atau panduan visual langkah demi langkah (dari tempurung kelapa hingga kontainer) yang beranimasi secara berurutan.
+    - **Galeri:** Galeri gambar dan video yang bersih dan modern.
+    - **Kontak Kami:** Formulir kontak yang profesional.
+
+### Backend - Panel Kontrol
+Backend harus menjadi CMS yang kuat dan ramah pengguna untuk klien. Kita akan menggunakan **Filament PHP** untuk ini. Klien harus bisa mengelola semuanya tanpa menyentuh kode.
+- **Konten yang Dikelola:**
+    1.  **Produk:** Tambah, edit, hapus produk dan semua spesifikasi teknisnya (nilai kalor, kadar abu, kelembapan, karbon tetap, waktu pembakaran, dimensi, dll.).
+    2.  **Konten Halaman:** Edit teks dan gambar di halaman seperti "Tentang Kami" dan "Proses Kami" menggunakan Rich Text Editor.
+    3.  **Galeri:** Unggah, urutkan ulang, dan hapus gambar/video.
+    4.  **Permintaan:** Lihat dan kelola semua pesan yang dikirim melalui formulir kontak.
+
+## 5. Tugas Kamu (Sesi Coding Pertama Kita)
+Mari kita mulai dengan **Fase 1: Dasar Proyek**. Harap hasilkan kode dan struktur berikut untuk saya.
+
+**Tugas 1: Hasilkan Migrasi Database.**
+- Buat migrasi untuk tabel `products`. Sertakan semua kolom yang diperlukan untuk spesifikasi teknis (`name`, `slug`, `description`, `image_path`, `calorific_value`, `ash_content`, `moisture`, `fixed_carbon`, `burning_time`, `dimensions`, `is_featured`).
+    - `name`: string, 255 karakter.
+    - `slug`: string, 255 karakter, unik. Harus dibuat secara otomatis dari `name`.
+    - `description`: text.
+    - `image_path`: string, 255 karakter. Path ke gambar utama produk.
+    - `calorific_value`: decimal, 8 digit total, 2 digit di belakang koma (999999.99). Satuan dalam kcal/kg.
+    - `ash_content`: decimal, 5 digit total, 2 digit di belakang koma (999.99). Satuan dalam persen (%).
+    - `moisture`: decimal, 5 digit total, 2 digit di belakang koma (999.99). Satuan dalam persen (%).
+    - `fixed_carbon`: decimal, 5 digit total, 2 digit di belakang koma (999.99). Satuan dalam persen (%).
+    - `burning_time`: integer. Satuan dalam menit.
+    - `dimensions`: string, 255 karakter. Contoh: "5cm x 5cm x 5cm".
+    - `is_featured`: boolean. Default `false`.
+    - Semua tabel harus menyertakan `created_at` dan `updated_at` timestamps.
+    - Tambahkan indeks pada kolom `slug` untuk pencarian yang cepat.
+- Buat migrasi untuk tabel `inquiries` untuk menyimpan kiriman formulir kontak (`name`, `email`, `company`, `country`, `message`, `status`).
+    - `name`: string, 255 karakter.
+    - `email`: string, 255 karakter.
+    - `company`: string, 255 karakter.
+    - `country`: string, 255 karakter.
+    - `message`: text.
+    - `status`: string, 50 karakter. Nilai yang diizinkan: 'new', 'read', 'replied', 'closed'. Default 'new'.
+    - Semua tabel harus menyertakan `created_at` dan `updated_at` timestamps.
+    - Tambahkan indeks pada kolom `status` untuk filtering yang efisien.
+- Buat migrasi untuk tabel `site_settings` untuk menyimpan pengaturan global situs seperti nama situs, alamat, informasi kontak, dan tautan sosial media.
+    - `key`: string, 100 karakter. Kunci unik untuk setiap pengaturan (misalnya, 'site_name', 'company_address', 'youtube_video_url', 'facebook_url').
+    - `value`: text. Nilai dari pengaturan tersebut.
+    - Semua tabel harus menyertakan `created_at` dan `updated_at` timestamps.
+    - Tambahkan indeks pada kolom `key` untuk pencarian yang cepat.
+- Buat migrasi untuk tabel `galleries` untuk menyimpan item galeri (gambar/video).
+    - `title`: string, 255 karakter. Judul opsional untuk item galeri.
+    - `description`: text. Deskripsi opsional untuk item galeri.
+    - `file_path`: string, 500 karakter. Path ke file gambar atau video.
+    - `file_type`: string, 50 karakter. Jenis file, misalnya 'image' atau 'video'.
+    - `mime_type`: string, 100 karakter. Mime type dari file (misalnya, 'image/jpeg', 'video/mp4').
+    - `size`: unsignedBigInteger. Ukuran file dalam bytes.
+    - `is_published`: boolean. Default `true`. Untuk menentukan apakah item ditampilkan.
+    - `order`: unsignedInteger. Default `0`. Untuk menentukan urutan tampilan item.
+    - `uploaded_by`: unsignedBigInteger. ID pengguna yang mengunggah file (akan berelasi dengan tabel `users` jika ada).
+    - `uploaded_at`: timestamp. Waktu file diunggah. Default `now()`.
+    - Semua tabel harus menyertakan `created_at` dan `updated_at` timestamps.
+    - Tambahkan indeks pada kolom `order` dan `is_published` untuk pengurutan dan filtering yang efisien.
+- Nama file migrasi harus dalam bahasa Indonesia: `buat_tabel_produk`, `buat_tabel_permintaan`, `buat_tabel_pengaturan_situs`, dan `buat_tabel_galeri`.
+
+**Tugas 2: Hasilkan Model Eloquent.**
+- Buat model `Product` dan `Inquiry` dengan properti `$fillable` yang benar berdasarkan migrasi.
+- Buat model `SiteSetting` untuk tabel `site_settings`. Model ini bisa menggunakan pendekatan EAV (Entity-Attribute-Value) atau metode akses statis untuk mendapatkan nilai berdasarkan `key`. Pertimbangkan penggunaan caching untuk nilai-nilai ini.
+- Buat model `Gallery` untuk tabel `galleries`. Tentukan `$fillable` dan `$casts` yang sesuai, serta relasi ke model `User` jika tabel `users` ada.
+- Tambahkan cast untuk kolom `is_featured` menjadi `boolean` dan `calorific_value`, `ash_content`, `moisture`, `fixed_carbon` menjadi `decimal` di model `Product` jika diperlukan untuk konsistensi tipe data.
+- Pastikan semua model menggunakan `$timestamps = true` untuk memanfaatkan kolom `created_at` dan `updated_at`.
+
+**Tugas 3: Hasilkan Layout Blade Utama.**
+- Buat file layout master `resources/views/layouts/app.blade.php`.
+- File ini HARUS menyertakan tautan CDN untuk:
+    - Tailwind CSS
+    - Alpine.js
+    - GSAP Core & plugin `ScrollTrigger`.
+- Ini harus memiliki struktur HTML5 dasar dengan placeholder (`<header>`, `<main>`, `<footer>`) dan `@yield('content')` atau `<slot>` untuk konten halaman.
+- Pastikan direktori `resources/views/pages` dibuat untuk menampung view halaman.
+
+**Tugas 4: Hasilkan Route dan Controller Awal.**
+- Buat `PageController` dengan metode untuk halaman `home`.
+- Metode ini hanya perlu mengembalikan view, misalnya, `return view('pages.home');`.
+- Definisikan route root `/` di `routes/web.php` untuk mengarah ke metode controller ini.
+
+**Tugas 5: Garis Besar Langkah Selanjutnya.**
+- Setelah menyediakan kode, cantumkan secara singkat seperti apa "Fase 2" kita akan terlihat (misalnya, "1. Instal dan konfigurasi Filament. 2. Buat ProductResource di Filament. 3. Bangun komponen navigasi dan footer.").
+- Fase 2 akan lebih fokus pada integrasi backend dengan Filament dan mulai membangun beberapa komponen frontend dasar.
+    1.  **Instalasi dan Konfigurasi Filament:** Pasang paket Filament, publish konfigurasi, dan siapkan struktur dasar panel admin.
+    2.  **Pembuatan Resources di Filament:**
+        - Buat `ProductResource` untuk mengelola produk dan spesifikasinya.
+        - Buat `InquiryResource` untuk melihat dan mengelola permintaan dari formulir kontak.
+        - Buat `GalleryResource` untuk mengelola item galeri (upload, reorder, publish status).
+        - Buat `SiteSettingResource` (atau bentuk custom form) untuk mengelola pengaturan global situs.
+    3.  **Pengembangan Frontend Awal:**
+        - Bangun komponen navigasi (`<header>`) dan footer (`<footer>`) dengan Tailwind CSS.
+        - Implementasi dasar untuk halaman "Beranda", "Tentang Kami", dan "Kontak Kami" dengan layout dasar dan placeholder konten.
+        - Mulai integrasi Alpine.js untuk interaktivitas sederhana (misalnya, toggle menu mobile).
+        - Rencanakan struktur direktori untuk aset (gambar, video) dan implementasi keamanan file upload.

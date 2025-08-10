@@ -1,0 +1,237 @@
+
+
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arang Briket Premium - Kualitas Ekspor</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Playfair Display (untuk judul) & Inter (untuk teks) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- AOS (Animate On Scroll) Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* Custom font-family */
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        .font-sans {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Styling untuk video responsif */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 0.75rem; /* rounded-xl */
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Efek transisi pada navbar saat di-scroll */
+        .navbar-scrolled {
+            background-color: rgba(17, 24, 39, 0.8); /* bg-gray-900 with opacity */
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 font-sans">
+
+    <!-- Header & Navbar -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-display font-bold text-white">Briket<span class="text-amber-400">Kita</span>.</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#hero" class="hover:text-amber-400 transition-colors">Beranda</a>
+                <a href="#produk" class="hover:text-amber-400 transition-colors">Produk</a>
+                <a href="#video" class="hover:text-amber-400 transition-colors">Profil</a>
+                <a href="#kontak" class="hover:text-amber-400 transition-colors">Kontak</a>
+            </nav>
+            <a href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20dengan%20produk%20briket%20Anda." target="_blank" class="bg-amber-500 text-gray-900 font-bold py-2 px-5 rounded-full hover:bg-amber-400 transition-all duration-300 transform hover:scale-105">
+                Order Sekarang
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="relative min-h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1621201469018-0133d325a2a4?q=80&w=2070&auto=format&fit=crop');">
+            <div class="absolute inset-0 bg-black opacity-60"></div>
+            <div class="relative text-center text-white p-6 z-10" data-aos="fade-up">
+                <h1 class="text-5xl md:text-7xl font-display mb-4">Panas Lebih Lama, Kualitas Dunia.</h1>
+                <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8">Menyediakan briket arang kelapa kualitas ekspor terbaik untuk segala kebutuhan Anda, dari shisha hingga barbeque.</p>
+                <a href="#produk" class="bg-amber-500 text-gray-900 font-bold py-3 px-8 rounded-full text-lg hover:bg-amber-400 transition-all duration-300 transform hover:scale-105">
+                    Lihat Produk Kami
+                </a>
+            </div>
+        </section>
+
+        <!-- Produk Section -->
+        <section id="produk" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-4xl font-display text-white">Produk Unggulan Kami</h2>
+                    <p class="text-gray-400 mt-2">Dibuat dari 100% batok kelapa pilihan.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Produk 1: Briket Kubus -->
+                    <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300" data-aos="fade-up" data-aos-delay="100">
+                        <img src="https://placehold.co/600x400/1a202c/ffffff?text=Briket+Kubus" alt="Briket Kubus untuk Shisha" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-display text-white mb-2">Briket Kubus (Shisha)</h3>
+                            <p class="text-gray-400 mb-4">Ukuran 2.5cm, panas stabil dan tahan lama. Minim asap dan abu, sempurna untuk pengalaman shisha terbaik.</p>
+                            <a href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20untuk%20memesan%20Briket%20Kubus%20(Shisha)." target="_blank" class="inline-block bg-transparent border border-amber-500 text-amber-500 font-semibold py-2 px-6 rounded-full hover:bg-amber-500 hover:text-gray-900 transition-all duration-300">
+                                Pesan via WhatsApp
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Produk 2: Briket Hexagonal -->
+                    <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300" data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://placehold.co/600x400/1a202c/ffffff?text=Briket+Hexagonal" alt="Briket Hexagonal untuk BBQ" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-display text-white mb-2">Briket Hexagonal (BBQ)</h3>
+                            <p class="text-gray-400 mb-4">Bara api lebih panas dan merata. Cocok untuk kebutuhan barbeque, restoran, dan industri.</p>
+                            <a href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20untuk%20memesan%20Briket%20Hexagonal%20(BBQ)." target="_blank" class="inline-block bg-transparent border border-amber-500 text-amber-500 font-semibold py-2 px-6 rounded-full hover:bg-amber-500 hover:text-gray-900 transition-all duration-300">
+                                Pesan via WhatsApp
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Produk 3: Briket Custom -->
+                    <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300" data-aos="fade-up" data-aos-delay="300">
+                        <img src="https://placehold.co/600x400/1a202c/ffffff?text=Briket+Custom" alt="Briket Custom" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-display text-white mb-2">Custom Order</h3>
+                            <p class="text-gray-400 mb-4">Kami melayani pemesanan briket dengan bentuk, ukuran, dan spesifikasi sesuai kebutuhan Anda.</p>
+                            <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20bertanya%20mengenai%20custom%20order%20briket." target="_blank" class="inline-block bg-transparent border border-amber-500 text-amber-500 font-semibold py-2 px-6 rounded-full hover:bg-amber-500 hover:text-gray-900 transition-all duration-300">
+                                Konsultasi Gratis
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Profile Section -->
+        <section id="video" class="py-20 bg-gray-800">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-4xl font-display text-white">Proses Produksi Kami</h2>
+                    <p class="text-gray-400 mt-2">Lihat bagaimana kami menciptakan briket berkualitas tinggi.</p>
+                </div>
+                <div class="max-w-4xl mx-auto" data-aos="zoom-in">
+                    <div class="video-container shadow-2xl">
+                        <!-- Ganti 'dQw4w9WgXcQ' dengan ID video YouTube Anda -->
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=lC2W_p0tE5N4Z8Yg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Keunggulan Section -->
+        <section id="keunggulan" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-4xl font-display text-white">Mengapa Memilih Kami?</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+                    <div data-aos="fade-up" data-aos-delay="100">
+                        <div class="bg-amber-500 text-gray-900 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.657 7.343A8 8 0 0117.657 18.657z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Ramah Lingkungan</h3>
+                        <p class="text-gray-400">Terbuat dari limbah tempurung kelapa, tanpa menebang pohon.</p>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="200">
+                        <div class="bg-amber-500 text-gray-900 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Tahan Lebih Lama</h3>
+                        <p class="text-gray-400">Durasi bakar hingga 2-3 jam, lebih efisien dan hemat.</p>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="300">
+                        <div class="bg-amber-500 text-gray-900 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h1a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.8 11.945l.242.242M15.955 11.945l-.242.242" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Minim Asap</h3>
+                        <p class="text-gray-400">Tidak mengeluarkan asap berlebih yang mengganggu.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="kontak" class="bg-gray-800 border-t border-gray-700">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <h3 class="text-2xl font-display font-bold text-white">Briket<span class="text-amber-400">Kita</span>.</h3>
+                    <p class="text-gray-400 mt-2">Kualitas premium untuk pasar global.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white">Tautan Cepat</h4>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#produk" class="text-gray-400 hover:text-amber-400">Produk</a></li>
+                        <li><a href="#video" class="text-gray-400 hover:text-amber-400">Profil Video</a></li>
+                        <li><a href="#keunggulan" class="text-gray-400 hover:text-amber-400">Keunggulan</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white">Hubungi Kami</h4>
+                    <p class="text-gray-400 mt-4">Jl. Industri Briket No. 123, Kota Anda, Indonesia</p>
+                    <p class="text-gray-400">Email: sales@briketkita.com</p>
+                    <p class="text-amber-400 font-bold mt-2">WA: +62 812-3456-7890</p>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-6 text-center text-gray-500">
+                <p>&copy; <span id="year"></span> BriketKita. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- AOS (Animate On Scroll) Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inisialisasi AOS
+        AOS.init({
+            duration: 800, // durasi animasi
+            once: true, // animasi hanya terjadi sekali
+        });
+
+        // Script untuk mengubah background navbar saat scroll
+        const navbar = document.getElementById('navbar');
+        window.onscroll = function () {
+            if (window.pageYOffset > 50) {
+                navbar.classList.add("navbar-scrolled");
+            } else {
+                navbar.classList.remove("navbar-scrolled");
+            }
+        };
+        
+        // Script untuk menampilkan tahun sekarang di footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
