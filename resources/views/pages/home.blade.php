@@ -120,8 +120,8 @@
                 </div>
                 <div class="max-w-4xl mx-auto" data-aos="zoom-in">
                     <div class="video-container shadow-2xl">
-                        @if($youtube_id)
-                        <iframe src="https://www.youtube.com/embed/{{ $youtube_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        @if(isset($settings['youtube_video_embed_code']) && $settings['youtube_video_embed_code'])
+                        {!! $settings['youtube_video_embed_code'] !!}
                         @else
                         <div class="w-full h-full flex items-center justify-center bg-gray-700"><p class="text-gray-400">@lang('messages.video_not_available')</p></div>
                         @endif

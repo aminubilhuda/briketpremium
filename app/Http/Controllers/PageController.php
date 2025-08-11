@@ -20,14 +20,7 @@ class PageController extends Controller
         $timelines = Timeline::orderBy('order')->get();
         $processSteps = ProcessStep::orderBy('order')->get();
 
-        // Helper untuk mengambil ID video dari URL YouTube
-        $youtube_id = '';
-        if ($url = $settings->get('youtube_video_url')) {
-            parse_str(parse_url($url, PHP_URL_QUERY), $queryParams);
-            $youtube_id = $queryParams['v'] ?? '';
-        }
-
-        return view('pages.home', compact('settings', 'featuredProducts', 'galleryItems', 'youtube_id', 'timelines', 'processSteps'));
+        return view('pages.home', compact('settings', 'featuredProducts', 'galleryItems', 'timelines', 'processSteps'));
     }
 
     public function productDetail($slug)

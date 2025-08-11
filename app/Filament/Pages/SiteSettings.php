@@ -7,6 +7,7 @@ use Filament\Actions\Action;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
@@ -49,7 +50,9 @@ class SiteSettings extends Page implements HasForms
                             ->label('Gambar Latar Belakang Hero')
                             ->image()
                             ->directory('hero-images'),
-                        TextInput::make('youtube_video_url')->label('URL Video Youtube (Hero)'),
+                        Textarea::make('youtube_video_embed_code')
+                            ->label('Kode Embed Video Youtube')
+                            ->columnSpanFull(),
                     ]),
                 Section::make('Sosial Media')
                     ->description('Tautan ke akun sosial media perusahaan.')
