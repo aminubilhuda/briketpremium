@@ -13,7 +13,7 @@ class PageController extends Controller
     public function home()
     {
         $settings = SiteSetting::all()->pluck('value', 'key');
-        $featuredProducts = Product::where('is_featured', true)->get();
+        $featuredProducts = Product::where('is_featured', true)->take(9)->get();
         $galleryItems = Gallery::where('is_published', true)->orderBy('order')->take(6)->get();
 
         // Helper untuk mengambil ID video dari URL YouTube

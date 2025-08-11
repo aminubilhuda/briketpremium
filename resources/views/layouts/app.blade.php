@@ -22,6 +22,8 @@
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; border-radius: 0.75rem; }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
         .navbar-scrolled { background-color: rgba(17, 24, 39, 0.8); backdrop-filter: blur(10px); }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-200 font-sans">
@@ -47,6 +49,20 @@
         const yearElement = document.getElementById('year');
         if(yearElement) {
             yearElement.textContent = new Date().getFullYear();
+        }
+
+        const productSlider = document.getElementById('product-slider');
+        const prevProductButton = document.getElementById('prev-product');
+        const nextProductButton = document.getElementById('next-product');
+
+        if (productSlider && prevProductButton && nextProductButton) {
+            nextProductButton.addEventListener('click', () => {
+                productSlider.scrollBy({ left: 300, behavior: 'smooth' });
+            });
+
+            prevProductButton.addEventListener('click', () => {
+                productSlider.scrollBy({ left: -300, behavior: 'smooth' });
+            });
         }
     </script>
 </body>

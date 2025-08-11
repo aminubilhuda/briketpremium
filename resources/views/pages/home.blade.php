@@ -57,21 +57,29 @@
                     <p class="text-gray-400 mt-2">@lang('messages.featured_products_subtitle')</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    @forelse($featuredProducts as $index => $product)
-                    <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 flex flex-col" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
-                        <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}" class="w-full h-56 object-cover">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-2xl font-display text-white mb-2">{{ $product->name }}</h3>
-                            <p class="text-gray-400 mb-4 flex-grow">{{ $product->description }}</p>
-                            <a href="{{ route('product.detail', $product->slug) }}" class="inline-block bg-transparent border border-amber-500 text-amber-500 font-semibold py-2 px-6 rounded-full hover:bg-amber-500 hover:text-gray-900 transition-all duration-300 self-start">
-                                @lang('messages.view_details')
-                            </a>
+                <div class="relative">
+                    <div id="product-slider" class="flex overflow-x-auto space-x-8 pb-8 scrollbar-hide">
+                        @forelse($featuredProducts as $index => $product)
+                        <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3">
+                            <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
+                                <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}" class="w-full h-56 object-cover">
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h3 class="text-2xl font-display text-white mb-2">{{ $product->name }}</h3>
+                                    <p class="text-gray-400 mb-4 flex-grow">{{ $product->description }}</p>
+                                    <a href="{{ route('product.detail', $product->slug) }}" class="inline-block bg-transparent border border-amber-500 text-amber-500 font-semibold py-2 px-6 rounded-full hover:bg-amber-500 hover:text-gray-900 transition-all duration-300 self-start">
+                                        @lang('messages.view_details')
+                                    </a>
+                                </div>
+                            </div>
                         </div>
+                        @empty
+                        <p class="text-center text-gray-400 col-span-3">@lang('messages.no_featured_products')</p>
+                        @endforelse
                     </div>
-                    @empty
-                    <p class="text-center text-gray-400 col-span-3">@lang('messages.no_featured_products')</p>
-                    @endforelse
+                    <div class="absolute top-1/2 -translate-y-1/2 flex justify-between w-full">
+                        <button id="prev-product" class="bg-gray-800/50 hover:bg-gray-800 text-white p-2 rounded-full"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
+                        <button id="next-product" class="bg-gray-800/50 hover:bg-gray-800 text-white p-2 rounded-full"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
+                    </div>
                 </div>
             </div>
         </section>
