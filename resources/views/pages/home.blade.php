@@ -138,26 +138,15 @@
                     <p class="text-gray-400 mt-2">@lang('messages.process_subtitle')</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-center">
-                    <div data-aos="fade-up" data-aos-delay="100">
-                        <div class="bg-gray-800 border-2 border-amber-500/30 text-amber-500 w-24 h-24 mx-auto rounded-full flex items-center justify-center mb-4"><span class="text-4xl font-display">1</span></div>
-                        <h3 class="text-xl font-bold text-white mb-2">@lang('messages.process_step1_title')</h3>
-                        <p class="text-gray-400">@lang('messages.process_step1_desc')</p>
+                    @forelse($processSteps as $index => $step)
+                    <div data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
+                        <div class="bg-gray-800 border-2 border-amber-500/30 text-amber-500 w-24 h-24 mx-auto rounded-full flex items-center justify-center mb-4"><span class="text-4xl font-display">{{ $index + 1 }}</span></div>
+                        <h3 class="text-xl font-bold text-white mb-2">{{ $step->title }}</h3>
+                        <p class="text-gray-400">{{ $step->description }}</p>
                     </div>
-                    <div data-aos="fade-up" data-aos-delay="200">
-                        <div class="bg-gray-800 border-2 border-amber-500/30 text-amber-500 w-24 h-24 mx-auto rounded-full flex items-center justify-center mb-4"><span class="text-4xl font-display">2</span></div>
-                        <h3 class="text-xl font-bold text-white mb-2">@lang('messages.process_step2_title')</h3>
-                        <p class="text-gray-400">@lang('messages.process_step2_desc')</p>
-                    </div>
-                    <div data-aos="fade-up" data-aos-delay="300">
-                        <div class="bg-gray-800 border-2 border-amber-500/30 text-amber-500 w-24 h-24 mx-auto rounded-full flex items-center justify-center mb-4"><span class="text-4xl font-display">3</span></div>
-                        <h3 class="text-xl font-bold text-white mb-2">@lang('messages.process_step3_title')</h3>
-                        <p class="text-gray-400">@lang('messages.process_step3_desc')</p>
-                    </div>
-                     <div data-aos="fade-up" data-aos-delay="400">
-                        <div class="bg-gray-800 border-2 border-amber-500/30 text-amber-500 w-24 h-24 mx-auto rounded-full flex items-center justify-center mb-4"><span class="text-4xl font-display">4</span></div>
-                        <h3 class="text-xl font-bold text-white mb-2">@lang('messages.process_step4_title')</h3>
-                        <p class="text-gray-400">@lang('messages.process_step4_desc')</p>
-                    </div>
+                    @empty
+                    <p class="text-center text-gray-400 col-span-full">@lang('messages.no_process_steps')</p>
+                    @endforelse
                 </div>
             </div>
         </section>

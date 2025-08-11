@@ -7,6 +7,7 @@ use App\Models\Gallery;
 use App\Models\Product;
 use App\Models\SiteSetting;
 use App\Models\Timeline;
+use App\Models\ProcessStep;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -17,6 +18,7 @@ class PageController extends Controller
         $featuredProducts = Product::where('is_featured', true)->take(9)->get();
         $galleryItems = Gallery::where('is_published', true)->orderBy('order')->take(6)->get();
         $timelines = Timeline::orderBy('order')->get();
+        $processSteps = ProcessStep::orderBy('order')->get();
 
         // Helper untuk mengambil ID video dari URL YouTube
         $youtube_id = '';
@@ -25,7 +27,7 @@ class PageController extends Controller
             $youtube_id = $queryParams['v'] ?? '';
         }
 
-        return view('pages.home', compact('settings', 'featuredProducts', 'galleryItems', 'youtube_id', 'timelines'));
+        return view('pages.home', compact('settings', 'featuredProducts', 'galleryItems', 'youtube_id', 'timelines', 'processSteps'));
     }
 
     public function productDetail($slug)

@@ -64,4 +64,5 @@ return [
     'spec_dimensions' => 'Dimensi',
     'buy_on_ecommerce' => 'Beli di E-commerce',
     'no_timeline_data' => 'Data timeline belum tersedia.',
+    'no_process_steps' => 'Langkah proses belum tersedia.',
 ];

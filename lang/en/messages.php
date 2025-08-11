@@ -64,4 +64,5 @@ return [
     'spec_dimensions' => 'Dimensions',
     'buy_on_ecommerce' => 'Buy on E-commerce',
     'no_timeline_data' => 'No timeline data available.',
+    'no_process_steps' => 'No process steps available.',
 ];
