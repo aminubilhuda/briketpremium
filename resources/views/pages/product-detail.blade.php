@@ -44,7 +44,7 @@
                         <!-- Kolom Detail -->
                         <div data-aos="fade-up">
                             <h1 class="text-4xl font-display text-white mb-4">{{ $product->name }}</h1>
-                            <p class="text-gray-400 mb-8">{{ $product->description }}</p>
+                            <div class="text-gray-500 mb-8">{!! $product->description !!}</div>
 
                             <h3 class="text-2xl font-display text-white mb-4 border-t border-gray-700 pt-6">@lang('messages.technical_specifications')</h3>
                             <table class="w-full text-left table-auto">
