@@ -38,11 +38,11 @@
 
     <main>
         <!-- Hero Section -->
-        <section id="hero" class="relative min-h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1621201469018-0133d325a2a4?q=80&w=2070&auto=format&fit=crop');">
+        <section id="hero" class="relative min-h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('{{ isset($settings['hero_background_image_path']) && $settings['hero_background_image_path'] ? asset('storage/' . $settings['hero_background_image_path']) : '' }}'); background-color: {{ isset($settings['hero_background_image_path']) && $settings['hero_background_image_path'] ? 'transparent' : '#000000' }};">
             <div class="absolute inset-0 bg-black opacity-60"></div>
             <div class="relative text-center text-white p-6 z-10" data-aos="fade-up">
-                <h1 class="text-5xl md:text-7xl font-display mb-4">@lang('messages.hero_title')</h1>
-                <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8">@lang('messages.hero_subtitle')</p>
+                <h1 class="text-5xl md:text-7xl font-display mb-4">{{ $settings['hero_title'] ?? __('messages.hero_title') }}</h1>
+                <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8">{{ $settings['hero_subtitle'] ?? __('messages.hero_subtitle') }}</p>
                 <a href="#produk" class="bg-amber-500 text-gray-900 font-bold py-3 px-8 rounded-full text-lg hover:bg-amber-400 transition-all duration-300 transform hover:scale-105">
                     @lang('messages.hero_button')
                 </a>

@@ -6,6 +6,7 @@ use App\Models\SiteSetting;
 use Filament\Actions\Action;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
@@ -42,7 +43,13 @@ class SiteSettings extends Page implements HasForms
                 Section::make('Konten & Media')
                     ->description('URL untuk konten eksternal.')
                     ->schema([
-                        TextInput::make('youtube_video_url')->label('URL Video Youtube (Hero)')->url(),
+                        TextInput::make('hero_title')->label('Judul Hero')->required(),
+                        TextInput::make('hero_subtitle')->label('Subjudul Hero')->required(),
+                        FileUpload::make('hero_background_image_path')
+                            ->label('Gambar Latar Belakang Hero')
+                            ->image()
+                            ->directory('hero-images'),
+                        TextInput::make('youtube_video_url')->label('URL Video Youtube (Hero)'),
                     ]),
                 Section::make('Sosial Media')
                     ->description('Tautan ke akun sosial media perusahaan.')
