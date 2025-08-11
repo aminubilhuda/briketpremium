@@ -14,6 +14,16 @@
                 <a href="#kontak" class="hover:text-amber-400 transition-colors">@lang('messages.nav_contact')</a>
             </nav>
             <div class="flex items-center space-x-4 relative z-50">
+                @if($settings['shopee_url'])
+                    <a href="{{ $settings['shopee_url'] }}" target="_blank" class="text-white hover:text-amber-400">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M13.29 6.3l-4.6 4.6c-.55.55-.55 1.44 0 1.99l4.6 4.6c.55.55 1.44.55 1.99 0l4.6-4.6c.55-.55.55-1.44 0-1.99l-4.6-4.6c-.55-.55-1.44-.55-1.99 0zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                    </a>
+                @endif
+                @if($settings['tokopedia_url'])
+                    <a href="{{ $settings['tokopedia_url'] }}" target="_blank" class="text-white hover:text-amber-400">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                    </a>
+                @endif
                 <a href="https://wa.me/{{ $settings['whatsapp_number'] ?? '' }}?text=Halo,%20saya%20tertarik%20dengan%20produk%20briket%20Anda." target="_blank" class="bg-amber-500 text-gray-900 font-bold py-2 px-5 rounded-full hover:bg-amber-400 transition-all duration-300 transform hover:scale-105">
                     @lang('messages.order_now')
                 </a>

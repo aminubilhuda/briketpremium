@@ -62,4 +62,5 @@ return [
     'spec_fixed_carbon' => 'Karbon Tetap',
     'spec_burning_time' => 'Waktu Bakar',
     'spec_dimensions' => 'Dimensi',
+    'buy_on_ecommerce' => 'Beli di E-commerce',
 ];

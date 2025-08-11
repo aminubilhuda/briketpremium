@@ -62,4 +62,5 @@ return [
     'spec_fixed_carbon' => 'Fixed Carbon',
     'spec_burning_time' => 'Burning Time',
     'spec_dimensions' => 'Dimensions',
+    'buy_on_ecommerce' => 'Buy on E-commerce',
 ];
