@@ -38,7 +38,7 @@
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                         <!-- Kolom Gambar -->
                         <div data-aos="zoom-in">
-                            <img src="{{ $product->image_path }}" alt="{{ $product->name }}" class="w-full h-auto rounded-xl shadow-lg">
+                            <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}" class="w-full h-auto rounded-xl shadow-lg">
                         </div>
 
                         <!-- Kolom Detail -->
