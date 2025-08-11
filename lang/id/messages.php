@@ -25,6 +25,9 @@ return [
     'process_title' => 'Bagaimana Kami Bekerja',
     'process_subtitle' => 'Empat tahap utama untuk memastikan kualitas tertinggi.',
 
+    'video_profile_title' => 'Video Profil Perusahaan',
+    'video_profile_subtitle' => 'Pelajari lebih lanjut tentang proses produksi kami.',
+
     'gallery_title' => 'Galeri Produksi',
     'gallery_subtitle' => 'Momen di balik layar dari pabrik kami.',
     'gallery_empty' => 'Galeri akan segera diperbarui.',

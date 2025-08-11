@@ -25,6 +25,9 @@ return [
     'process_title' => 'How We Work',
     'process_subtitle' => 'Four main stages to ensure the highest quality.',
 
+    'video_profile_title' => 'Company Profile Video',
+    'video_profile_subtitle' => 'Learn more about our production process.',
+
     'gallery_title' => 'Production Gallery',
     'gallery_subtitle' => 'Behind-the-scenes moments from our factory.',
     'gallery_empty' => 'Gallery will be updated soon.',

@@ -115,8 +115,8 @@
         <section id="video" class="py-20 bg-gray-800">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12" data-aos="fade-up">
-                    <h2 class="text-4xl font-display text-white">@lang('messages.process_title')</h2>
-                    <p class="text-gray-400 mt-2">@lang('messages.process_subtitle')</p>
+                    <h2 class="text-4xl font-display text-white">@lang('messages.video_profile_title')</h2>
+                    <p class="text-gray-400 mt-2">@lang('messages.video_profile_subtitle')</p>
                 </div>
                 <div class="max-w-4xl mx-auto" data-aos="zoom-in">
                     <div class="video-container shadow-2xl">
