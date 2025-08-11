@@ -63,4 +63,5 @@ return [
     'spec_burning_time' => 'Waktu Bakar',
     'spec_dimensions' => 'Dimensi',
     'buy_on_ecommerce' => 'Beli di E-commerce',
+    'no_timeline_data' => 'Data timeline belum tersedia.',
 ];

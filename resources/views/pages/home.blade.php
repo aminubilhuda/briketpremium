@@ -94,33 +94,19 @@
                 <div class="relative max-w-2xl mx-auto">
                     <!-- Garis Timeline -->
                     <div class="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-amber-500/30"></div>
-                    <!-- Item Timeline 1 -->
+                    @forelse($timelines as $index => $timeline)
+                    <!-- Item Timeline -->
                     <div data-aos="fade-up" class="relative mb-12">
                         <div class="absolute w-8 h-8 bg-gray-900 rounded-full border-2 border-amber-500 left-1/2 transform -translate-x-1/2 mt-1"></div>
-                        <div class="w-full md:w-1/2 md:pr-8 md:text-right">
-                            <p class="text-amber-400 font-semibold">2018</p>
-                            <h3 class="text-xl font-bold text-white mt-1">@lang('messages.about_founding_year')</h3>
-                            <p class="text-gray-400 mt-2">@lang('messages.about_founding_desc')</p>
+                        <div class="w-full {{ $index % 2 == 0 ? 'md:w-1/2 md:pr-8 md:text-right' : 'md:w-1/2 md:ml-auto md:pl-8' }}">
+                            <p class="text-amber-400 font-semibold">{{ $timeline->year }}</p>
+                            <h3 class="text-xl font-bold text-white mt-1">{{ $timeline->title }}</h3>
+                            <p class="text-gray-400 mt-2">{{ $timeline->description }}</p>
                         </div>
                     </div>
-                    <!-- Item Timeline 2 -->
-                    <div data-aos="fade-up" class="relative mb-12">
-                        <div class="absolute w-8 h-8 bg-gray-900 rounded-full border-2 border-amber-500 left-1/2 transform -translate-x-1/2 mt-1"></div>
-                        <div class="w-full md:w-1/2 md:ml-auto md:pl-8">
-                             <p class="text-amber-400 font-semibold">2020</p>
-                            <h3 class="text-xl font-bold text-white mt-1">@lang('messages.about_export_year')</h3>
-                            <p class="text-gray-400 mt-2">@lang('messages.about_export_desc')</p>
-                        </div>
-                    </div>
-                    <!-- Item Timeline 3 -->
-                    <div data-aos="fade-up" class="relative">
-                        <div class="absolute w-8 h-8 bg-gray-900 rounded-full border-2 border-amber-500 left-1/2 transform -translate-x-1/2 mt-1"></div>
-                        <div class="w-full md:w-1/2 md:pr-8 md:text-right">
-                            <p class="text-amber-400 font-semibold">2023 - @lang('messages.about_present')</p>
-                            <h3 class="text-xl font-bold text-white mt-1">@lang('messages.about_expansion_title')</h3>
-                            <p class="text-gray-400">@lang('messages.about_expansion_desc')</p>
-                        </div>
-                    </div>
+                    @empty
+                    <p class="text-center text-gray-400 col-span-full">@lang('messages.no_timeline_data')</p>
+                    @endforelse
                 </div>
             </div>
         </section>

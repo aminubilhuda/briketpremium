@@ -63,4 +63,5 @@ return [
     'spec_burning_time' => 'Burning Time',
     'spec_dimensions' => 'Dimensions',
     'buy_on_ecommerce' => 'Buy on E-commerce',
+    'no_timeline_data' => 'No timeline data available.',
 ];

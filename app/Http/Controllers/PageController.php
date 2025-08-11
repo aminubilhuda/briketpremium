@@ -6,6 +6,7 @@ use App\Models\Inquiry;
 use App\Models\Gallery;
 use App\Models\Product;
 use App\Models\SiteSetting;
+use App\Models\Timeline;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -15,6 +16,7 @@ class PageController extends Controller
         $settings = SiteSetting::all()->pluck('value', 'key');
         $featuredProducts = Product::where('is_featured', true)->take(9)->get();
         $galleryItems = Gallery::where('is_published', true)->orderBy('order')->take(6)->get();
+        $timelines = Timeline::orderBy('order')->get();
 
         // Helper untuk mengambil ID video dari URL YouTube
         $youtube_id = '';
@@ -23,7 +25,7 @@ class PageController extends Controller
             $youtube_id = $queryParams['v'] ?? '';
         }
 
-        return view('pages.home', compact('settings', 'featuredProducts', 'galleryItems', 'youtube_id'));
+        return view('pages.home', compact('settings', 'featuredProducts', 'galleryItems', 'youtube_id', 'timelines'));
     }
 
     public function productDetail($slug)
