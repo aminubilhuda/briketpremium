@@ -37,6 +37,7 @@ class SiteSettings extends Page implements HasForms
                     ->schema([
                         TextInput::make('site_name')->label('Nama Situs')->required(),
                         TextInput::make('company_address')->label('Alamat Perusahaan')->required(),
+                        TextInput::make('whatsapp_number')->label('Nomor WhatsApp')->required(),
                     ]),
                 Section::make('Konten & Media')
                     ->description('URL untuk konten eksternal.')

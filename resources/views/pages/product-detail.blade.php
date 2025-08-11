@@ -9,7 +9,7 @@
                 <a href="/" class="hover:text-amber-400 transition-colors">@lang('messages.back_to_home')</a>
             </nav>
             <div class="flex items-center space-x-4">
-                <a href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20dengan%20produk%20briket%20Anda." target="_blank" class="bg-amber-500 text-gray-900 font-bold py-2 px-5 rounded-full hover:bg-amber-400 transition-all duration-300 transform hover:scale-105">
+                <a href="https://wa.me/{{ $settings['whatsapp_number'] ?? '' }}?text=Halo,%20saya%20tertarik%20dengan%20produk%20briket%20Anda." target="_blank" class="bg-amber-500 text-gray-900 font-bold py-2 px-5 rounded-full hover:bg-amber-400 transition-all duration-300 transform hover:scale-105">
                     @lang('messages.order_now')
                 </a>
                 <div class="flex space-x-2 text-sm font-semibold">
@@ -49,7 +49,7 @@
                             </table>
 
                             <div class="mt-10">
-                                <a href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20untuk%20memesan%20{{ urlencode($product->name) }}." target="_blank" class="w-full text-center bg-amber-500 text-gray-900 font-bold py-4 px-8 rounded-full text-lg hover:bg-amber-400 transition-all duration-300">
+                                <a href="https://wa.me/{{ $settings['whatsapp_number'] ?? '' }}?text=Halo,%20saya%20tertarik%20untuk%20memesan%20{{ urlencode($product->name) }}." target="_blank" class="w-full text-center bg-amber-500 text-gray-900 font-bold py-4 px-8 rounded-full text-lg hover:bg-amber-400 transition-all duration-300">
                                     @lang('messages.request_quote')
                                 </a>
                             </div>

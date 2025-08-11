@@ -14,7 +14,7 @@
                 <a href="#kontak" class="hover:text-amber-400 transition-colors">@lang('messages.nav_contact')</a>
             </nav>
             <div class="flex items-center space-x-4 relative z-50">
-                <a href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20dengan%20produk%20briket%20Anda." target="_blank" class="bg-amber-500 text-gray-900 font-bold py-2 px-5 rounded-full hover:bg-amber-400 transition-all duration-300 transform hover:scale-105">
+                <a href="https://wa.me/{{ $settings['whatsapp_number'] ?? '' }}?text=Halo,%20saya%20tertarik%20dengan%20produk%20briket%20Anda." target="_blank" class="bg-amber-500 text-gray-900 font-bold py-2 px-5 rounded-full hover:bg-amber-400 transition-all duration-300 transform hover:scale-105">
                     @lang('messages.order_now')
                 </a>
                 <div class="flex space-x-2 text-sm font-semibold">
@@ -277,7 +277,7 @@
                     <h4 class="text-lg font-semibold text-white">@lang('messages.nav_contact')</h4>
                     <p class="text-gray-400 mt-4">{{ $settings['company_address'] ?? 'Alamat belum diatur' }}</p>
                     <p class="text-gray-400">Email: sales@briketkita.com</p>
-                    <p class="text-amber-400 font-bold mt-2">WA: +62 812-3456-7890</p>
+                    <p class="text-amber-400 font-bold mt-2">WA: {{ $settings['whatsapp_number'] ?? '' }}</p>
                 </div>
             </div>
             <div class="mt-12 border-t border-gray-700 pt-6 text-center text-gray-500">

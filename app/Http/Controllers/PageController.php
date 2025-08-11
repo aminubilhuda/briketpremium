@@ -33,4 +33,19 @@ class PageController extends Controller
 
         return view('pages.product-detail', compact('settings', 'product'));
     }
+
+    public function submitContactForm(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'company' => 'required|string|max:255',
+            'country' => 'required|string|max:255',
+            'message' => 'required|string',
+        ]);
+
+        Inquiry::create($validated);
+
+        return redirect()->back()->with('success', __('messages.contact_success'));
+    }
 }
