@@ -9,12 +9,12 @@
                 <a href="/" class="hover:text-amber-400 transition-colors">@lang('messages.back_to_home')</a>
             </nav>
             <div class="flex items-center space-x-4">
-                @if($settings['shopee_url'])
+                @if(isset($settings['shopee_url']) && $settings['shopee_url'])
                     <a href="{{ $settings['shopee_url'] }}" target="_blank" class="text-white hover:text-amber-400">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M13.29 6.3l-4.6 4.6c-.55.55-.55 1.44 0 1.99l4.6 4.6c.55.55 1.44.55 1.99 0l4.6-4.6c.55-.55.55-1.44 0-1.99l-4.6-4.6c-.55-.55-1.44-.55-1.99 0zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
                     </a>
                 @endif
-                @if($settings['tokopedia_url'])
+                @if(isset($settings['tokopedia_url']) && $settings['tokopedia_url'])
                     <a href="{{ $settings['tokopedia_url'] }}" target="_blank" class="text-white hover:text-amber-400">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
                     </a>
@@ -61,13 +61,13 @@
                             <div class="mt-10">
                                 <h3 class="text-2xl font-display text-white mb-4 border-t border-gray-700 pt-6">@lang('messages.buy_on_ecommerce')</h3>
                                 <div class="flex items-center space-x-4">
-                                    @if($settings['shopee_url'])
+                                    @if(isset($settings['shopee_url']) && $settings['shopee_url'])
                                         <a href="{{ $settings['shopee_url'] }}" target="_blank" class="bg-orange-500 text-white font-bold py-3 px-6 rounded-full hover:bg-orange-600 transition-all duration-300 flex items-center space-x-2">
                                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M13.29 6.3l-4.6 4.6c-.55.55-.55 1.44 0 1.99l4.6 4.6c.55.55 1.44.55 1.99 0l4.6-4.6c.55-.55.55-1.44 0-1.99l-4.6-4.6c-.55-.55-1.44-.55-1.99 0zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
                                             <span>Shopee</span>
                                         </a>
                                     @endif
-                                    @if($settings['tokopedia_url'])
+                                    @if(isset($settings['tokopedia_url']) && $settings['tokopedia_url'])
                                         <a href="{{ $settings['tokopedia_url'] }}" target="_blank" class="bg-green-500 text-white font-bold py-3 px-6 rounded-full hover:bg-green-600 transition-all duration-300 flex items-center space-x-2">
                                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
                                             <span>Tokopedia</span>
