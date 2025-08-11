@@ -59,7 +59,7 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     @forelse($featuredProducts as $index => $product)
-                    <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
+                    <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 flex flex-col" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
                         <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}" class="w-full h-56 object-cover">
                         <div class="p-6 flex flex-col flex-grow">
                             <h3 class="text-2xl font-display text-white mb-2">{{ $product->name }}</h3>
