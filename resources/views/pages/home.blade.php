@@ -3,9 +3,11 @@
 @section('content')
     <!-- Header & Navbar -->
     <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center relative z-50">
+        <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-display font-bold text-white">{{ Str::before($settings['site_name'] ?? 'Briket Kita', ' ') }}<span class="text-amber-400">{{ Str::after($settings['site_name'] ?? 'Briket Kita', ' ') }}</span>.</a>
-            <nav class="hidden md:flex space-x-8">
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-6 lg:space-x-8">
                 <a href="#hero" class="hover:text-amber-400 transition-colors">@lang('messages.nav_home')</a>
                 <a href="#tentang" class="hover:text-amber-400 transition-colors">@lang('messages.nav_about')</a>
                 <a href="#produk" class="hover:text-amber-400 transition-colors">@lang('messages.nav_products')</a>
@@ -13,7 +15,9 @@
                 <a href="#galeri" class="hover:text-amber-400 transition-colors">@lang('messages.nav_gallery')</a>
                 <a href="#kontak" class="hover:text-amber-400 transition-colors">@lang('messages.nav_contact')</a>
             </nav>
-            <div class="flex items-center space-x-4 relative z-50">
+
+            <!-- Desktop CTA -->
+            <div class="hidden md:flex items-center space-x-4">
                 @if(isset($settings['shopee_url']) && $settings['shopee_url'])
                     <a href="{{ $settings['shopee_url'] }}" target="_blank" class="text-white hover:text-amber-400">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M13.29 6.3l-4.6 4.6c-.55.55-.55 1.44 0 1.99l4.6 4.6c.55.55 1.44.55 1.99 0l4.6-4.6c.55-.55.55-1.44 0-1.99l-4.6-4.6c-.55-.55-1.44-.55-1.99 0zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
@@ -24,15 +28,56 @@
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
                     </a>
                 @endif
-                <a href="https://wa.me/{{ $settings['whatsapp_number'] ?? '' }}?text=Halo,%20saya%20tertarik%20dengan%20produk%20briket%20Anda." target="_blank" class="bg-amber-500 text-gray-900 font-bold py-2 px-5 rounded-full hover:bg-amber-400 transition-all duration-300 transform hover:scale-105">
+                <a href="https://wa.me/{{ $settings['whatsapp_number'] ?? '' }}?text=Halo,%20saya%20tertarik%20dengan%20produk%20briket%20Anda." target="_blank" class="bg-amber-500 text-gray-900 font-bold py-2 px-5 rounded-full hover:bg-amber-400 transition-all duration-300 transform hover:scale-105 text-sm">
                     @lang('messages.order_now')
                 </a>
                 <div class="flex space-x-2 text-sm font-semibold">
                     <a href="{{ url('/lang/en') }}" class="{{ app()->getLocale() == 'en' ? 'text-amber-400' : 'text-gray-400 hover:text-white' }} transition-colors" target="_self">EN</a>
-                    <span>|</span>
+                    <span class="text-gray-500">|</span>
                     <a href="{{ url('/lang/id') }}" class="{{ app()->getLocale() == 'id' ? 'text-amber-400' : 'text-gray-400 hover:text-white' }} transition-colors" target="_self">ID</a>
                 </div>
             </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800/95 backdrop-blur-sm">
+            <nav class="flex flex-col items-center space-y-4 py-8">
+                <a href="#hero" class="text-lg hover:text-amber-400 transition-colors">@lang('messages.nav_home')</a>
+                <a href="#tentang" class="text-lg hover:text-amber-400 transition-colors">@lang('messages.nav_about')</a>
+                <a href="#produk" class="text-lg hover:text-amber-400 transition-colors">@lang('messages.nav_products')</a>
+                <a href="#proses" class="text-lg hover:text-amber-400 transition-colors">@lang('messages.nav_process')</a>
+                <a href="#galeri" class="text-lg hover:text-amber-400 transition-colors">@lang('messages.nav_gallery')</a>
+                <a href="#kontak" class="text-lg hover:text-amber-400 transition-colors">@lang('messages.nav_contact')</a>
+                <div class="pt-4 border-t border-gray-700 w-full flex flex-col items-center space-y-4">
+                    <a href="https://wa.me/{{ $settings['whatsapp_number'] ?? '' }}?text=Halo,%20saya%20tertarik%20dengan%20produk%20briket%20Anda." target="_blank" class="bg-amber-500 text-gray-900 font-bold py-3 px-8 rounded-full hover:bg-amber-400 transition-all duration-300 w-full max-w-xs text-center">
+                        @lang('messages.order_now')
+                    </a>
+                    <div class="flex items-center space-x-4">
+                        @if(isset($settings['shopee_url']) && $settings['shopee_url'])
+                            <a href="{{ $settings['shopee_url'] }}" target="_blank" class="text-white hover:text-amber-400">
+                                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M13.29 6.3l-4.6 4.6c-.55.55-.55 1.44 0 1.99l4.6 4.6c.55.55 1.44.55 1.99 0l4.6-4.6c.55-.55.55-1.44 0-1.99l-4.6-4.6c-.55-.55-1.44-.55-1.99 0zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                            </a>
+                        @endif
+                        @if(isset($settings['tokopedia_url']) && $settings['tokopedia_url'])
+                            <a href="{{ $settings['tokopedia_url'] }}" target="_blank" class="text-white hover:text-amber-400">
+                                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                            </a>
+                        @endif
+                    </div>
+                    <div class="flex space-x-2 text-base font-semibold">
+                        <a href="{{ url('/lang/en') }}" class="{{ app()->getLocale() == 'en' ? 'text-amber-400' : 'text-gray-400 hover:text-white' }} transition-colors" target="_self">EN</a>
+                        <span class="text-gray-500">|</span>
+                        <a href="{{ url('/lang/id') }}" class="{{ app()->getLocale() == 'id' ? 'text-amber-400' : 'text-gray-400 hover:text-white' }} transition-colors" target="_self">ID</a>
+                    </div>
+                </div>
+            </nav>
         </div>
     </header>
 
@@ -41,8 +86,8 @@
         <section id="hero" class="relative min-h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('{{ isset($settings['hero_background_image_path']) && $settings['hero_background_image_path'] ? asset('storage/' . $settings['hero_background_image_path']) : '' }}'); background-color: {{ isset($settings['hero_background_image_path']) && $settings['hero_background_image_path'] ? 'transparent' : '#000000' }};">
             <div class="absolute inset-0 bg-black opacity-60"></div>
             <div class="relative text-center text-white p-6 z-10" data-aos="fade-up">
-                <h1 class="text-5xl md:text-7xl font-display mb-4">{{ $settings['hero_title'] ?? __('messages.hero_title') }}</h1>
-                <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8">{{ $settings['hero_subtitle'] ?? __('messages.hero_subtitle') }}</p>
+                <h1 class="text-4xl sm:text-5xl md:text-7xl font-display mb-4">{{ $settings['hero_title'] ?? __('messages.hero_title') }}</h1>
+                <p class="text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-8">{{ $settings['hero_subtitle'] ?? __('messages.hero_subtitle') }}</p>
                 <a href="#produk" class="bg-amber-500 text-gray-900 font-bold py-3 px-8 rounded-full text-lg hover:bg-amber-400 transition-all duration-300 transform hover:scale-105">
                     @lang('messages.hero_button')
                 </a>
@@ -50,58 +95,65 @@
         </section>
 
         <!-- Produk Section -->
-        <section id="produk" class="py-20 bg-gray-900">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12" data-aos="fade-up">
-                    <h2 class="text-4xl font-display text-white">@lang('messages.featured_products_title')</h2>
+        <section id="produk" class="py-16 sm:py-20 bg-gray-900">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-10 sm:mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl sm:text-4xl font-display text-white">@lang('messages.featured_products_title')</h2>
                     <p class="text-gray-400 mt-2">@lang('messages.featured_products_subtitle')</p>
                 </div>
                 
                 <div class="relative">
-                    <div id="product-slider" class="flex overflow-x-auto space-x-8 pb-8 scrollbar-hide">
+                    <div id="product-slider" class="flex overflow-x-auto space-x-6 md:space-x-8 pb-8 scrollbar-hide snap-x snap-mandatory">
                         @forelse($featuredProducts as $index => $product)
-                        <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3">
+                        <div class="flex-shrink-0 w-full sm:w-1/2 md:w-1/2 lg:w-1/3 snap-center">
                             <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
-                                <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}" class="w-full h-56 object-cover">
-                                <div class="p-6 flex flex-col flex-grow">
-                                    <h3 class="text-2xl font-display text-white mb-2">{{ $product->name }}</h3>
-                                    <div class="text-gray-500 mb-4">{!! $product->description !!}</div>
-                                    <a href="{{ route('product.detail', $product->slug) }}" class="inline-block bg-transparent border border-amber-500 text-amber-500 font-semibold py-2 px-6 rounded-full hover:bg-amber-500 hover:text-gray-900 transition-all duration-300 self-start mt-auto">
+                                <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}" class="w-full h-48 sm:h-56 object-cover">
+                                <div class="p-4 sm:p-6 flex flex-col flex-grow">
+                                    <h3 class="text-xl sm:text-2xl font-display text-white mb-2">{{ $product->name }}</h3>
+                                    <div class="text-gray-500 text-sm sm:text-base mb-4 line-clamp-3">{!! $product->description !!}</div>
+                                    <a href="{{ route('product.detail', $product->slug) }}" class="inline-block bg-transparent border border-amber-500 text-amber-500 font-semibold py-2 px-4 sm:px-6 rounded-full hover:bg-amber-500 hover:text-gray-900 transition-all duration-300 self-start mt-auto text-sm sm:text-base">
                                         @lang('messages.view_details')
                                     </a>
                                 </div>
                             </div>
                         </div>
                         @empty
-                        <p class="text-center text-gray-400 col-span-3">@lang('messages.no_featured_products')</p>
+                        <p class="text-center text-gray-400 col-span-full">@lang('messages.no_featured_products')</p>
                         @endforelse
                     </div>
-                    <div class="absolute top-1/2 -translate-y-1/2 flex justify-between w-full">
-                        <button id="prev-product" class="bg-gray-800/50 hover:bg-gray-800 text-white p-2 rounded-full"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
-                        <button id="next-product" class="bg-gray-800/50 hover:bg-gray-800 text-white p-2 rounded-full"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
+                    <div class="absolute inset-y-0 left-0 flex items-center">
+                        <button id="prev-product" class="bg-gray-800/50 hover:bg-gray-800 text-white p-2 rounded-full ml-2 focus:outline-none">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        </button>
+                    </div>
+                    <div class="absolute inset-y-0 right-0 flex items-center">
+                        <button id="next-product" class="bg-gray-800/50 hover:bg-gray-800 text-white p-2 rounded-full mr-2 focus:outline-none">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Tentang Kami Section -->
-        <section id="tentang" class="py-20 bg-gray-800">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12" data-aos="fade-up">
-                    <h2 class="text-4xl font-display text-white">@lang('messages.about_title')</h2>
+        <section id="tentang" class="py-16 sm:py-20 bg-gray-800">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-10 sm:mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl sm:text-4xl font-display text-white">@lang('messages.about_title')</h2>
                     <p class="text-gray-400 mt-2">@lang('messages.about_subtitle')</p>
                 </div>
                 <div class="relative max-w-2xl mx-auto">
                     <!-- Garis Timeline -->
-                    <div class="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-amber-500/30"></div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-amber-500/30 hidden md:block"></div>
                     @forelse($timelines as $index => $timeline)
                     <!-- Item Timeline -->
-                    <div data-aos="fade-up" class="relative mb-12">
-                        <div class="absolute w-8 h-8 bg-gray-900 rounded-full border-2 border-amber-500 left-1/2 transform -translate-x-1/2 mt-1"></div>
-                        <div class="w-full {{ $index % 2 == 0 ? 'md:w-1/2 md:pr-8 md:text-right' : 'md:w-1/2 md:ml-auto md:pl-8' }}">
-                            <p class="text-amber-400 font-semibold">{{ $timeline->year }}</p>
-                            <h3 class="text-xl font-bold text-white mt-1">{{ $timeline->title }}</h3>
-                            <p class="text-gray-400 mt-2">{{ $timeline->description }}</p>
+                    <div data-aos="fade-up" class="relative mb-10 sm:mb-12 flex flex-col {{ $index % 2 == 0 ? 'md:flex-row' : 'md:flex-row-reverse' }} items-center md:items-start">
+                        <div class="md:relative w-10 h-10 sm:w-12 sm:h-12 bg-amber-500 rounded-full border-2 border-amber-500 flex-shrink-0 z-10 flex items-center justify-center text-gray-900 font-bold text-sm sm:text-base {{ $index % 2 == 0 ? 'md:mr-4' : 'md:ml-4' }} mb-2 md:mb-0 transform transition-transform duration-300 hover:scale-110">
+                            {{ $timeline->year }}
+                        </div>
+                        <div class="w-full {{ $index % 2 == 0 ? 'md:w-1/2 md:pr-8 md:text-right' : 'md:w-1/2 md:pl-8' }} text-center md:text-left p-4 rounded-lg bg-gray-900 shadow-lg border border-gray-700">
+                            <h3 class="text-xl font-bold text-white mb-1">{{ $timeline->title }}</h3>
+                            <p class="text-gray-400 text-sm">{{ $timeline->description }}</p>
                         </div>
                     </div>
                     @empty
@@ -112,14 +164,14 @@
         </section>
 
         <!-- Video Profile Section -->
-        <section id="video" class="py-20 bg-gray-800">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12" data-aos="fade-up">
-                    <h2 class="text-4xl font-display text-white">@lang('messages.video_profile_title')</h2>
+        <section id="video" class="py-16 sm:py-20 bg-gray-800">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-10 sm:mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl sm:text-4xl font-display text-white">@lang('messages.video_profile_title')</h2>
                     <p class="text-gray-400 mt-2">@lang('messages.video_profile_subtitle')</p>
                 </div>
                 <div class="max-w-4xl mx-auto" data-aos="zoom-in">
-                    <div class="video-container shadow-2xl">
+                    <div class="video-container shadow-2xl aspect-video">
                         @if(isset($settings['youtube_video_embed_code']) && $settings['youtube_video_embed_code'])
                         {!! $settings['youtube_video_embed_code'] !!}
                         @else
@@ -131,18 +183,18 @@
         </section>
 
         <!-- Proses Kami Section -->
-        <section id="proses" class="py-20 bg-gray-900">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12" data-aos="fade-up">
-                    <h2 class="text-4xl font-display text-white">@lang('messages.process_title')</h2>
+        <section id="proses" class="py-16 sm:py-20 bg-gray-900">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-10 sm:mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl sm:text-4xl font-display text-white">@lang('messages.process_title')</h2>
                     <p class="text-gray-400 mt-2">@lang('messages.process_subtitle')</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-center">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 text-center">
                     @forelse($processSteps as $index => $step)
                     <div data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
-                        <div class="bg-gray-800 border-2 border-amber-500/30 text-amber-500 w-24 h-24 mx-auto rounded-full flex items-center justify-center mb-4"><span class="text-4xl font-display">{{ $index + 1 }}</span></div>
+                        <div class="bg-gray-800 border-2 border-amber-500/30 text-amber-500 w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full flex items-center justify-center mb-4"><span class="text-3xl sm:text-4xl font-display">{{ $index + 1 }}</span></div>
                         <h3 class="text-xl font-bold text-white mb-2">{{ $step->title }}</h3>
-                        <p class="text-gray-400">{{ $step->description }}</p>
+                        <p class="text-gray-400 text-sm sm:text-base">{{ $step->description }}</p>
                     </div>
                     @empty
                     <p class="text-center text-gray-400 col-span-full">@lang('messages.no_process_steps')</p>
@@ -152,13 +204,13 @@
         </section>
 
         <!-- Galeri Section -->
-        <section id="galeri" class="py-20 bg-gray-800">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12" data-aos="fade-up">
-                    <h2 class="text-4xl font-display text-white">@lang('messages.gallery_title')</h2>
+        <section id="galeri" class="py-16 sm:py-20 bg-gray-800">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-10 sm:mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl sm:text-4xl font-display text-white">@lang('messages.gallery_title')</h2>
                     <p class="text-gray-400 mt-2">@lang('messages.gallery_subtitle')</p>
                 </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
                     @forelse($galleryItems as $item)
                         <div data-aos="zoom-in">
                             <img class="h-auto max-w-full rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300" src="{{ asset('storage/' . $item->file_path) }}" alt="{{ $item->title ?? 'Gambar Galeri' }}">
@@ -171,23 +223,23 @@
         </section>
 
         <!-- Keunggulan Section -->
-        <section id="keunggulan" class="py-20 bg-gray-900">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12" data-aos="fade-up">
-                    <h2 class="text-4xl font-display text-white">@lang('messages.why_choose_us_title')</h2>
+        <section id="keunggulan" class="py-16 sm:py-20 bg-gray-900">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-10 sm:mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl sm:text-4xl font-display text-white">@lang('messages.why_choose_us_title')</h2>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 text-center">
                     @forelse($advantages as $index => $advantage)
                     <div data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
-                        <div class="bg-amber-500 text-gray-900 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <div class="bg-amber-500 text-gray-900 w-14 h-14 sm:w-16 sm:h-16 mx-auto rounded-full flex items-center justify-center mb-4">
                             @if($advantage->icon)
                                 {!! $advantage->icon !!}
                             @else
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 sm:h-8 sm:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
                             @endif
                         </div>
                         <h3 class="text-xl font-bold text-white mb-2">{{ $advantage->title }}</h3>
-                        <p class="text-gray-400">{{ $advantage->description }}</p>
+                        <p class="text-gray-400 text-sm sm:text-base">{{ $advantage->description }}</p>
                     </div>
                     @empty
                     <p class="text-center text-gray-400 col-span-full">@lang('messages.no_advantages')</p>
@@ -197,10 +249,10 @@
         </section>
 
         <!-- Contact Form Section -->
-        <section id="kontak" class="py-20 bg-gray-900">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12" data-aos="fade-up">
-                    <h2 class="text-4xl font-display text-white">@lang('messages.contact_title')</h2>
+        <section id="kontak" class="py-16 sm:py-20 bg-gray-900">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-10 sm:mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl sm:text-4xl font-display text-white">@lang('messages.contact_title')</h2>
                     <p class="text-gray-400 mt-2">@lang('messages.contact_subtitle')</p>
                 </div>
                 <div class="max-w-4xl mx-auto">
@@ -252,13 +304,13 @@
 
     <!-- Footer -->
     <footer class="bg-gray-800 border-t border-gray-700">
-        <div class="container mx-auto px-6 py-12">
+        <div class="container mx-auto px-4 sm:px-6 py-10 sm:py-12">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
                 <div>
                     <h3 class="text-2xl font-display font-bold text-white">{{ Str::before($settings['site_name'] ?? 'Briket Kita', ' ') }}<span class="text-amber-400">{{ Str::after($settings['site_name'] ?? 'Briket Kita', ' ') }}</span>.</h3>
-                    <p class="text-gray-400 mt-2">{{ $settings['hero_subtitle'] ?? __('messages.hero_subtitle') }}</p>
+                    <p class="text-gray-400 mt-2 text-sm sm:text-base">{{ $settings['hero_subtitle'] ?? __('messages.hero_subtitle') }}</p>
                     <div class="mt-4">
-                        <div class="rounded-lg overflow-hidden shadow-lg inline-block">
+                        <div class="rounded-lg overflow-hidden shadow-lg inline-block w-full max-w-xs sm:max-w-sm md:max-w-full">
                             @if(isset($settings['google_maps_embed_code']) && $settings['google_maps_embed_code'])
                                 {!! $settings['google_maps_embed_code'] !!}
                             @endif
@@ -268,21 +320,67 @@
                 <div>
                     <h4 class="text-lg font-semibold text-white">@lang('messages.footer_quick_links')</h4>
                     <ul class="mt-4 space-y-2">
-                        <li><a href="#produk" class="text-gray-400 hover:text-amber-400">@lang('messages.nav_products')</a></li>
-                        <li><a href="#video" class="text-gray-400 hover:text-amber-400">@lang('messages.nav_process')</a></li>
-                        <li><a href="#keunggulan" class="text-gray-400 hover:text-amber-400">@lang('messages.why_choose_us_title')</a></li>
+                        <li><a href="#produk" class="text-gray-400 hover:text-amber-400 text-sm sm:text-base">@lang('messages.nav_products')</a></li>
+                        <li><a href="#video" class="text-gray-400 hover:text-amber-400 text-sm sm:text-base">@lang('messages.nav_process')</a></li>
+                        <li><a href="#keunggulan" class="text-gray-400 hover:text-amber-400 text-sm sm:text-base">@lang('messages.why_choose_us_title')</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold text-white">@lang('messages.nav_contact')</h4>
-                    <p class="text-gray-400 mt-4">{{ $settings['company_address'] ?? 'Alamat belum diatur' }}</p>
-                    <p class="text-gray-400">Email: {{ $settings['company_email'] ?? 'sales@briketkita.com' }}</p>
-                    <p class="text-amber-400 font-bold mt-2">WA: {{ $settings['whatsapp_number'] ?? '' }}</p>
+                    <p class="text-gray-400 mt-4 text-sm sm:text-base">{{ $settings['company_address'] ?? 'Alamat belum diatur' }}</p>
+                    <p class="text-gray-400 text-sm sm:text-base">Email: {{ $settings['company_email'] ?? 'sales@briketkita.com' }}</p>
+                    <p class="text-amber-400 font-bold mt-2 text-sm sm:text-base">WA: {{ $settings['whatsapp_number'] ?? '' }}</p>
                 </div>
             </div>
-            <div class="mt-12 border-t border-gray-700 pt-6 text-center text-gray-500">
+            <div class="mt-10 sm:mt-12 border-t border-gray-700 pt-6 text-center text-gray-500 text-sm sm:text-base">
                 <p>&copy; <span id="year"></span> {{ $settings['site_name'] ?? 'Briket Kita' }}. @lang('messages.all_rights_reserved')</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navbar = document.getElementById('navbar');
+
+            mobileMenuButton.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when a link is clicked
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('bg-gray-900', 'shadow-lg');
+                } else {
+                    navbar.classList.remove('bg-gray-900', 'shadow-lg');
+                }
+            });
+
+            // Product Slider Navigation (if applicable)
+            const productSlider = document.getElementById('product-slider');
+            const prevProductButton = document.getElementById('prev-product');
+            const nextProductButton = document.getElementById('next-product');
+
+            if (productSlider && prevProductButton && nextProductButton) {
+                prevProductButton.addEventListener('click', () => {
+                    productSlider.scrollBy({ left: -productSlider.offsetWidth, behavior: 'smooth' });
+                });
+
+                nextProductButton.addEventListener('click', () => {
+                    productSlider.scrollBy({ left: productSlider.offsetWidth, behavior: 'smooth' });
+                });
+            }
+
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+    </script>
 @endsection
