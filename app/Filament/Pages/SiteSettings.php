@@ -53,6 +53,9 @@ class SiteSettings extends Page implements HasForms
                         Textarea::make('youtube_video_embed_code')
                             ->label('Kode Embed Video Youtube')
                             ->columnSpanFull(),
+                        Textarea::make('google_maps_embed_code')
+                            ->label('Kode Embed Google Maps')
+                            ->columnSpanFull(),
                     ]),
                 Section::make('Sosial Media')
                     ->description('Tautan ke akun sosial media perusahaan.')

@@ -28,6 +28,7 @@
 </head>
 <body class="bg-gray-900 text-gray-200 font-sans">
 
+
     @yield('content')
 
     <!-- AOS (Animate On Scroll) Script -->

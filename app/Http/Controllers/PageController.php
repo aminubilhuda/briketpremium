@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\SiteSetting;
 use App\Models\Timeline;
 use App\Models\ProcessStep;
+use App\Models\Advantage;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -19,8 +20,9 @@ class PageController extends Controller
         $galleryItems = Gallery::where('is_published', true)->orderBy('order')->take(6)->get();
         $timelines = Timeline::orderBy('order')->get();
         $processSteps = ProcessStep::orderBy('order')->get();
+        $advantages = Advantage::orderBy('order')->get();
 
-        return view('pages.home', compact('settings', 'featuredProducts', 'galleryItems', 'timelines', 'processSteps'));
+        return view('layouts.app', compact('settings'))->nest('content', 'pages.home', compact('settings', 'featuredProducts', 'galleryItems', 'timelines', 'processSteps', 'advantages'));
     }
 
     public function productDetail($slug)
@@ -28,7 +30,7 @@ class PageController extends Controller
         $settings = SiteSetting::all()->pluck('value', 'key');
         $product = Product::where('slug', $slug)->firstOrFail();
 
-        return view('pages.product-detail', compact('settings', 'product'));
+        return view('layouts.app', compact('settings'))->nest('content', 'pages.product-detail', compact('settings', 'product'));
     }
 
     public function submitContactForm(Request $request)

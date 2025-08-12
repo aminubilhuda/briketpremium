@@ -177,21 +177,21 @@
                     <h2 class="text-4xl font-display text-white">@lang('messages.why_choose_us_title')</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
-                    <div data-aos="fade-up" data-aos-delay="100">
-                        <div class="bg-amber-500 text-gray-900 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.657 7.343A8 8 0 0117.657 18.657z" /></svg></div>
-                        <h3 class="text-xl font-bold text-white mb-2">@lang('messages.eco_friendly')</h3>
-                        <p class="text-gray-400">@lang('messages.eco_friendly_desc')</p>
+                    @forelse($advantages as $index => $advantage)
+                    <div data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
+                        <div class="bg-amber-500 text-gray-900 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                            @if($advantage->icon)
+                                {!! $advantage->icon !!}
+                            @else
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            @endif
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">{{ $advantage->title }}</h3>
+                        <p class="text-gray-400">{{ $advantage->description }}</p>
                     </div>
-                    <div data-aos="fade-up" data-aos-delay="200">
-                        <div class="bg-amber-500 text-gray-900 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></div>
-                        <h3 class="text-xl font-bold text-white mb-2">@lang('messages.long_lasting')</h3>
-                        <p class="text-gray-400">@lang('messages.long_lasting_desc')</p>
-                    </div>
-                    <div data-aos="fade-up" data-aos-delay="300">
-                        <div class="bg-amber-500 text-gray-900 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h1a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.8 11.945l.242.242M15.955 11.945l-.242.242" /></svg></div>
-                        <h3 class="text-xl font-bold text-white mb-2">@lang('messages.minimal_smoke')</h3>
-                        <p class="text-gray-400">@lang('messages.minimal_smoke_desc')</p>
-                    </div>
+                    @empty
+                    <p class="text-center text-gray-400 col-span-full">@lang('messages.no_advantages')</p>
+                    @endforelse
                 </div>
             </div>
         </section>
@@ -257,6 +257,13 @@
                 <div>
                     <h3 class="text-2xl font-display font-bold text-white">{{ Str::before($settings['site_name'] ?? 'Briket Kita', ' ') }}<span class="text-amber-400">{{ Str::after($settings['site_name'] ?? 'Briket Kita', ' ') }}</span>.</h3>
                     <p class="text-gray-400 mt-2">@lang('messages.footer_tagline')</p>
+                    <div class="mt-4">
+                        <div class="rounded-lg overflow-hidden shadow-lg inline-block">
+                            @if(isset($settings['google_maps_embed_code']) && $settings['google_maps_embed_code'])
+                                {!! $settings['google_maps_embed_code'] !!}
+                            @endif
+                        </div>
+                    </div>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold text-white">@lang('messages.footer_quick_links')</h4>
