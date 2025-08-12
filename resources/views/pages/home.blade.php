@@ -256,7 +256,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
                 <div>
                     <h3 class="text-2xl font-display font-bold text-white">{{ Str::before($settings['site_name'] ?? 'Briket Kita', ' ') }}<span class="text-amber-400">{{ Str::after($settings['site_name'] ?? 'Briket Kita', ' ') }}</span>.</h3>
-                    <p class="text-gray-400 mt-2">@lang('messages.footer_tagline')</p>
+                    <p class="text-gray-400 mt-2">{{ $settings['hero_subtitle'] ?? __('messages.hero_subtitle') }}</p>
                     <div class="mt-4">
                         <div class="rounded-lg overflow-hidden shadow-lg inline-block">
                             @if(isset($settings['google_maps_embed_code']) && $settings['google_maps_embed_code'])
@@ -276,7 +276,7 @@
                 <div>
                     <h4 class="text-lg font-semibold text-white">@lang('messages.nav_contact')</h4>
                     <p class="text-gray-400 mt-4">{{ $settings['company_address'] ?? 'Alamat belum diatur' }}</p>
-                    <p class="text-gray-400">Email: sales@briketkita.com</p>
+                    <p class="text-gray-400">Email: {{ $settings['company_email'] ?? 'sales@briketkita.com' }}</p>
                     <p class="text-amber-400 font-bold mt-2">WA: {{ $settings['whatsapp_number'] ?? '' }}</p>
                 </div>
             </div>
