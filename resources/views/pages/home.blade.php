@@ -42,9 +42,9 @@
                     @lang('messages.order_now')
                 </a>
                 <div class="flex space-x-2 text-sm font-semibold">
-                    <a href="{{ url('/lang/en') }}" class="{{ app()->getLocale() == 'en' ? 'text-amber-400' : 'text-gray-400 hover:text-white' }} transition-colors" target="_self">EN</a>
+                    <a href="{{ route('language.switch', ['locale' => 'en']) }}" class="{{ app()->getLocale() == 'en' ? 'text-amber-400' : 'text-gray-400 hover:text-white' }} transition-colors" target="_self">EN</a>
                     <span class="text-gray-500">|</span>
-                    <a href="{{ url('/lang/id') }}" class="{{ app()->getLocale() == 'id' ? 'text-amber-400' : 'text-gray-400 hover:text-white' }} transition-colors" target="_self">ID</a>
+                    <a href="{{ route('language.switch', ['locale' => 'id']) }}" class="{{ app()->getLocale() == 'id' ? 'text-amber-400' : 'text-gray-400 hover:text-white' }} transition-colors" target="_self">ID</a>
                 </div>
             </div>
 
@@ -86,9 +86,9 @@
                         @endif
                     </div>
                     <div class="flex space-x-2 text-base font-semibold">
-                        <a href="{{ url('/lang/en') }}" class="{{ app()->getLocale() == 'en' ? 'text-amber-400' : 'text-gray-400 hover:text-white' }} transition-colors" target="_self">EN</a>
+                        <a href="{{ route('language.switch', ['locale' => 'en']) }}" class="{{ app()->getLocale() == 'en' ? 'text-amber-400' : 'text-gray-400 hover:text-white' }} transition-colors" target="_self">EN</a>
                         <span class="text-gray-500">|</span>
-                        <a href="{{ url('/lang/id') }}" class="{{ app()->getLocale() == 'id' ? 'text-amber-400' : 'text-gray-400 hover:text-white' }} transition-colors" target="_self">ID</a>
+                        <a href="{{ route('language.switch', ['locale' => 'id']) }}" class="{{ app()->getLocale() == 'id' ? 'text-amber-400' : 'text-gray-400 hover:text-white' }} transition-colors" target="_self">ID</a>
                     </div>
                 </div>
             </nav>
@@ -350,6 +350,33 @@
                     <p class="text-gray-400 mt-4 text-sm sm:text-base">{{ $settings['company_address'] ?? 'Alamat belum diatur' }}</p>
                     <p class="text-gray-400 text-sm sm:text-base">Email: {{ $settings['company_email'] ?? 'sales@briketkita.com' }}</p>
                     <p class="text-amber-400 font-bold mt-2 text-sm sm:text-base">WA: {{ $settings['whatsapp_number'] ?? '' }}</p>
+                    <div class="flex justify-center md:justify-start space-x-4 mt-4">
+                        @if(isset($settings['facebook_url']) && $settings['facebook_url'])
+                            <a href="{{ $settings['facebook_url'] }}" target="_blank" class="text-gray-400 hover:text-amber-400 transition-colors">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        @endif
+                        @if(isset($settings['instagram_url']) && $settings['instagram_url'])
+                            <a href="{{ $settings['instagram_url'] }}" target="_blank" class="text-gray-400 hover:text-amber-400 transition-colors">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        @endif
+                        @if(isset($settings['linkedin_url']) && $settings['linkedin_url'])
+                            <a href="{{ $settings['linkedin_url'] }}" target="_blank" class="text-gray-400 hover:text-amber-400 transition-colors">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        @endif
+                        @if(isset($settings['tiktok_url']) && $settings['tiktok_url'])
+                            <a href="{{ $settings['tiktok_url'] }}" target="_blank" class="text-gray-400 hover:text-amber-400 transition-colors">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                        @endif
+                        @if(isset($settings['x_url']) && $settings['x_url'])
+                            <a href="{{ $settings['x_url'] }}" target="_blank" class="text-gray-400 hover:text-amber-400 transition-colors">
+                                <i class="fab fa-x-twitter"></i>
+                            </a>
+                        @endif
+                    </div>
                 </div>
             </div>
             <div class="mt-10 sm:mt-12 border-t border-gray-700 pt-6 text-center text-gray-500 text-sm sm:text-base">

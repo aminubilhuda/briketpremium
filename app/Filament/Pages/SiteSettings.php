@@ -72,6 +72,8 @@ class SiteSettings extends Page implements HasForms
                         TextInput::make('facebook_url')->label('URL Facebook')->url(),
                         TextInput::make('instagram_url')->label('URL Instagram')->url(),
                         TextInput::make('linkedin_url')->label('URL LinkedIn')->url(),
+                        TextInput::make('tiktok_url')->label('URL TikTok')->url(),
+                        TextInput::make('x_url')->label('URL X')->url(),
                     ]),
                 Section::make('E-commerce')
                     ->description('Tautan ke toko e-commerce perusahaan.')
