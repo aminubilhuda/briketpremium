@@ -10,8 +10,8 @@ class SiteSettingSeeder extends Seeder
     public function run(): void
     {
         $settings = [
-            ['key' => 'site_name', 'value' => 'Arang Premium Indonesia'],
-            ['key' => 'company_address', 'value' => 'Jalan Industri Raya No. 1, Jepara, Jawa Tengah, Indonesia'],
+            ['key' => 'site_name', 'value' => 'Barra Muda Tritunggal'],
+            ['key' => 'company_address', 'value' => 'Jalan Industri Raya No. 1, Tuban, Jawa Timur, Indonesia'],
             ['key' => 'youtube_video_url', 'value' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'],
             ['key' => 'facebook_url', 'value' => 'https://facebook.com'],
             ['key' => 'instagram_url', 'value' => 'https://instagram.com'],

@@ -8,7 +8,7 @@ Route::get('/', [PageController::class, 'home']);
 Route::get('/produk/{slug}', [PageController::class, 'productDetail'])->name('product.detail');
 Route::post('/kontak', [PageController::class, 'submitContactForm'])->name('contact.submit');
 
-Route::get('/lang/{locale}', function ($locale) {
+Route::get('/ganti-bahasa/{locale}', function ($locale) {
     if (! in_array($locale, ['en', 'id'])) {
         abort(400);
     }
