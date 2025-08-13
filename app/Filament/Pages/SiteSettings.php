@@ -38,6 +38,14 @@ class SiteSettings extends Page implements HasForms
                     ->description('Pengaturan dasar untuk situs Anda.')
                     ->schema([
                         TextInput::make('site_name')->label('Nama Situs')->required(),
+                        FileUpload::make('site_logo_path')
+                            ->label('Logo Situs (akan menggantikan Nama Situs di header)')
+                            ->image()
+                            ->directory('site-logos'),
+                        FileUpload::make('favicon_path')
+                            ->label('Favicon')
+                            ->image()
+                            ->directory('site-favicons'),
                         TextInput::make('company_address')->label('Alamat Perusahaan')->required(),
                         TextInput::make('whatsapp_number')->label('Nomor WhatsApp')->required(),
                         TextInput::make('company_email')->label('Email Perusahaan')->email()->required(),

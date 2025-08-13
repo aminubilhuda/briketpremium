@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@lang('messages.site_title')</title>
+    <title>{{ $settings['site_name'] ?? config('app.name', 'Briket Premium') }}</title>
+    
+    <!-- Favicon -->
+    @if(isset($settings['favicon_path']) && $settings['favicon_path'])
+        <link rel="icon" href="{{ asset('storage/' . $settings['favicon_path']) }}">
+    @else
+        {{-- <link rel="icon" href="{{ asset('favicon.ico') }}"> --}}
+    @endif
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
