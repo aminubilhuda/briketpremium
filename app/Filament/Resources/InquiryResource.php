@@ -27,7 +27,7 @@ class InquiryResource extends Resource
                 Forms\Components\TextInput::make('email')->disabled(),
                 Forms\Components\TextInput::make('company')->disabled(),
                 Forms\Components\TextInput::make('country')->disabled(),
-                Forms\Components\Textarea::make('message')->disabled()->columnSpanFull(),
+                Forms\Components\Textarea::make('message')->disabled()->columnSpanFull()->rows(15)->extraAttributes(['style' => 'font-size: 1.2rem;']),
                 Forms\Components\Select::make('status')
                     ->options([
                         'new' => 'New',
