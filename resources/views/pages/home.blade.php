@@ -226,13 +226,82 @@
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
                     @forelse($galleryItems as $item)
-                        <div data-aos="zoom-in">
-                            <img class="h-auto max-w-full rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300" src="{{ asset('storage/' . $item->file_path) }}" alt="{{ $item->title ?? 'Gambar Galeri' }}">
+                        <div data-aos="zoom-in" class="relative group cursor-pointer" onclick="openGalleryModal('{{ $item->id }}')">
+                            <img class="h-auto max-w-full rounded-lg shadow-lg transform group-hover:scale-105 transition-transform duration-300" 
+                                src="{{ asset('storage/' . $item->file_path) }}" 
+                                alt="{{ app()->getLocale() == 'en' ? ($item->title_en ?? 'Gallery Image') : ($item->judul_id ?? 'Gambar Galeri') }}">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-75 transition-opacity duration-300 rounded-lg flex items-center justify-center">
+                                <h4 class="text-white text-center px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    {{ app()->getLocale() == 'en' ? ($item->title_en ?? 'Gallery Image') : ($item->judul_id ?? 'Gambar Galeri') }}
+                                </h4>
+                            </div>
                         </div>
                     @empty
                         <p class="text-center text-gray-400 col-span-full">@lang('messages.gallery_empty')</p>
                     @endforelse
                 </div>
+
+                <!-- Gallery Modal -->
+                <div id="galleryModal" class="fixed inset-0 z-50 hidden">
+                    <div class="absolute inset-0 bg-black bg-opacity-75 transition-opacity" onclick="closeGalleryModal()"></div>
+                    <div class="relative min-h-screen flex items-center justify-center p-4">
+                        <div class="bg-gray-900 rounded-xl max-w-4xl w-full mx-auto p-4 sm:p-6 relative">
+                            <button onclick="closeGalleryModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                            <div class="space-y-4">
+                                <img id="modalImage" class="w-full h-auto rounded-lg" src="" alt="">
+                                <h3 id="modalTitle" class="text-xl sm:text-2xl font-bold text-white"></h3>
+                                <p id="modalDescription" class="text-gray-400"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    // Gallery data
+                    const galleryData = {
+                        @foreach($galleryItems as $item)
+                        '{{ $item->id }}': {
+                            image: '{{ asset('storage/' . $item->file_path) }}',
+                            title: '{{ app()->getLocale() == 'en' ? ($item->title_en ?? 'Gallery Image') : ($item->judul_id ?? 'Gambar Galeri') }}',
+                            description: '{{ app()->getLocale() == 'en' ? ($item->description_en ?? '') : ($item->deskripsi_id ?? '') }}'
+                        },
+                        @endforeach
+                    };
+
+                    function openGalleryModal(id) {
+                        const modal = document.getElementById('galleryModal');
+                        const modalImage = document.getElementById('modalImage');
+                        const modalTitle = document.getElementById('modalTitle');
+                        const modalDescription = document.getElementById('modalDescription');
+                        
+                        const data = galleryData[id];
+                        if (data) {
+                            modalImage.src = data.image;
+                            modalImage.alt = data.title;
+                            modalTitle.textContent = data.title;
+                            modalDescription.textContent = data.description;
+                            modal.classList.remove('hidden');
+                            document.body.style.overflow = 'hidden';
+                        }
+                    }
+
+                    function closeGalleryModal() {
+                        const modal = document.getElementById('galleryModal');
+                        modal.classList.add('hidden');
+                        document.body.style.overflow = '';
+                    }
+
+                    // Close modal with Escape key
+                    document.addEventListener('keydown', function(e) {
+                        if (e.key === 'Escape') {
+                            closeGalleryModal();
+                        }
+                    });
+                </script>
             </div>
         </section>
 
