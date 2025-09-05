@@ -23,31 +23,109 @@ class ProductResource extends Resource
             ->schema([
                 Forms\Components\Group::make()
                     ->schema([
-                        Forms\Components\Section::make('Informasi Utama')
-                            ->schema([
-                                Forms\Components\TextInput::make('name')
-                                    ->required()
-                                    ->live(onBlur: true)
-                                    ->afterStateUpdated(fn (Forms\Set $set, ?string $state) => $set('slug', Str::slug($state))),
+                        Forms\Components\Tabs::make('Bahasa')
+                            ->tabs([
+                                // Tab Bahasa Indonesia
+                                Forms\Components\Tabs\Tab::make('Bahasa Indonesia')
+                                    ->schema([
+                                        Forms\Components\Section::make('Informasi Utama')
+                                            ->schema([
+                                                Forms\Components\TextInput::make('nama_id')
+                                                    ->label('Nama Produk')
+                                                    ->required()
+                                                    ->live(onBlur: true)
+                                                    ->afterStateUpdated(fn (Forms\Set $set, ?string $state) => $set('slug', Str::slug($state))),
 
-                                Forms\Components\TextInput::make('slug')
-                                    ->required()
-                                    ->unique(Product::class, 'slug', ignoreRecord: true),
+                                                Forms\Components\TextInput::make('slug')
+                                                    ->required()
+                                                    ->unique(Product::class, 'slug', ignoreRecord: true)
+                                                    ->disabled()
+                                                    ->dehydrated(),
 
-                                Forms\Components\RichEditor::make('description')
-                                    ->required()
-                                    ->columnSpanFull(),
-                            ])->columns(2),
+                                                Forms\Components\RichEditor::make('deskripsi_id')
+                                                    ->label('Deskripsi')
+                                                    ->required()
+                                                    ->columnSpanFull(),
+                                            ])->columns(2),
 
-                        Forms\Components\Section::make('Spesifikasi Teknis')
-                            ->schema([
-                                Forms\Components\TextInput::make('calorific_value')->required()->numeric()->suffix('kcal/kg'),
-                                Forms\Components\TextInput::make('ash_content')->required()->numeric()->suffix('%'),
-                                Forms\Components\TextInput::make('moisture')->required()->numeric()->suffix('%'),
-                                Forms\Components\TextInput::make('fixed_carbon')->required()->numeric()->suffix('%'),
-                                Forms\Components\TextInput::make('burning_time')->required()->numeric()->suffix('menit'),
-                                Forms\Components\TextInput::make('dimensions')->required()->label('Dimensi (P x L x T)'),
-                            ])->columns(2),
+                                        Forms\Components\Section::make('Spesifikasi Teknis')
+                                            ->schema([
+                                                Forms\Components\TextInput::make('nilai_kalori')
+                                                    ->label('Nilai Kalori')
+                                                    ->required()
+                                                    ->numeric()
+                                                    ->suffix('kcal/kg'),
+                                                Forms\Components\TextInput::make('kandungan_abu')
+                                                    ->label('Kandungan Abu')
+                                                    ->required()
+                                                    ->numeric()
+                                                    ->suffix('%'),
+                                                Forms\Components\TextInput::make('kelembaban')
+                                                    ->required()
+                                                    ->numeric()
+                                                    ->suffix('%'),
+                                                Forms\Components\TextInput::make('karbon_tetap')
+                                                    ->label('Karbon Tetap')
+                                                    ->required()
+                                                    ->numeric()
+                                                    ->suffix('%'),
+                                                Forms\Components\TextInput::make('waktu_bakar')
+                                                    ->required()
+                                                    ->numeric()
+                                                    ->suffix('menit'),
+                                                Forms\Components\TextInput::make('dimensi')
+                                                    ->required()
+                                                    ->label('Dimensi (P x L x T)'),
+                                            ])->columns(2),
+                                    ]),
+
+                                // Tab English
+                                Forms\Components\Tabs\Tab::make('English')
+                                    ->schema([
+                                        Forms\Components\Section::make('Main Information')
+                                            ->schema([
+                                                Forms\Components\TextInput::make('name_en')
+                                                    ->label('Product Name')
+                                                    ->nullable(),
+
+                                                Forms\Components\RichEditor::make('description_en')
+                                                    ->label('Description')
+                                                    ->nullable()
+                                                    ->columnSpanFull(),
+                                            ])->columns(2),
+
+                                        Forms\Components\Section::make('Technical Specifications')
+                                            ->schema([
+                                                Forms\Components\TextInput::make('calorific_value_en')
+                                                    ->label('Calorific Value')
+                                                    ->nullable()
+                                                    ->numeric()
+                                                    ->suffix('kcal/kg'),
+                                                Forms\Components\TextInput::make('ash_content_en')
+                                                    ->label('Ash Content')
+                                                    ->nullable()
+                                                    ->numeric()
+                                                    ->suffix('%'),
+                                                Forms\Components\TextInput::make('moisture_en')
+                                                    ->nullable()
+                                                    ->numeric()
+                                                    ->suffix('%'),
+                                                Forms\Components\TextInput::make('fixed_carbon_en')
+                                                    ->label('Fixed Carbon')
+                                                    ->nullable()
+                                                    ->numeric()
+                                                    ->suffix('%'),
+                                                Forms\Components\TextInput::make('burning_time_en')
+                                                    ->label('Burning Time')
+                                                    ->nullable()
+                                                    ->numeric()
+                                                    ->suffix('minutes'),
+                                                Forms\Components\TextInput::make('dimensions_en')
+                                                    ->nullable()
+                                                    ->label('Dimensions (L x W x H)'),
+                                            ])->columns(2),
+                                    ]),
+                            ])->columnSpanFull(),
                     ])->columnSpan(['lg' => 2]),
 
                 Forms\Components\Group::make()
@@ -72,16 +150,29 @@ class ProductResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('image_path')->label('Gambar'),
-                Tables\Columns\TextColumn::make('name')
-                    ->label('Nama Produk')
+                Tables\Columns\TextColumn::make('nama_id')
+                    ->label('Nama Produk (ID)')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('name_en')
+                    ->label('Product Name (EN)')
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\IconColumn::make('is_featured')
                     ->label('Unggulan')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('calorific_value')->label('Kalori')->sortable()->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('ash_content')->label('Kadar Abu')->sortable()->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('burning_time')->label('Waktu Bakar')->sortable()->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('nilai_kalori')
+                    ->label('Nilai Kalori')
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('kandungan_abu')
+                    ->label('Kandungan Abu')
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('waktu_bakar')
+                    ->label('Waktu Bakar')
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->label('Terakhir Diubah')
                     ->dateTime()

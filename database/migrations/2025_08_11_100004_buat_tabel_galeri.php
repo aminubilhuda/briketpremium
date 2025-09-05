@@ -13,8 +13,14 @@ return new class extends Migration
     {
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 255)->nullable();
-            $table->text('description')->nullable();
+            // Kolom untuk Bahasa Indonesia (default)
+            $table->string('judul_id', 255);
+            $table->text('deskripsi_id');
+            
+            // Kolom untuk Bahasa Inggris
+            $table->string('title_en', 255)->nullable();
+            $table->text('description_en')->nullable();
+            
             $table->string('file_path', 500);
             $table->string('file_type', 50)->comment('image or video');
             $table->string('mime_type', 100);

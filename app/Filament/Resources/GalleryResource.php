@@ -25,8 +25,30 @@ class GalleryResource extends Resource
             ->schema([
                 Forms\Components\Section::make('Konten Media')
                     ->schema([
-                        Forms\Components\TextInput::make('title')->label('Judul'),
-                        Forms\Components\Textarea::make('description')->label('Deskripsi'),
+                        Forms\Components\Tabs::make('Bahasa')
+                            ->tabs([
+                                // Tab Bahasa Indonesia
+                                Forms\Components\Tabs\Tab::make('Bahasa Indonesia')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('judul_id')
+                                            ->label('Judul')
+                                            ->required(),
+                                        Forms\Components\Textarea::make('deskripsi_id')
+                                            ->label('Deskripsi')
+                                            ->required(),
+                                    ]),
+                                
+                                // Tab English
+                                Forms\Components\Tabs\Tab::make('English')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('title_en')
+                                            ->label('Title')
+                                            ->nullable(),
+                                        Forms\Components\Textarea::make('description_en')
+                                            ->label('Description')
+                                            ->nullable(),
+                                    ]),
+                            ])->columnSpanFull(),
                     ]),
                 Forms\Components\Section::make('File')
                     ->schema([
@@ -57,7 +79,15 @@ class GalleryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('file_path')->label('Preview')->width(100)->height(100),
-                Tables\Columns\TextColumn::make('title')->label('Judul')->searchable(),
+                Tables\Columns\TextColumn::make('judul_id')
+                    ->label('Judul (ID)')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('title_en')
+                    ->label('Title (EN)')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('file_type')->label('Tipe')->badge(),
                 Tables\Columns\ToggleColumn::make('is_published')->label('Status Publikasi'),
                 Tables\Columns\TextColumn::make('order')->label('Urutan')->sortable()->toggleable(isToggledHiddenByDefault: true),

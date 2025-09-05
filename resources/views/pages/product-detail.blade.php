@@ -92,13 +92,13 @@
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-start">
                         <!-- Kolom Gambar -->
                         <div data-aos="zoom-in">
-                            <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}" class="w-full h-auto rounded-xl shadow-lg">
+                            <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ app()->getLocale() == 'en' ? $product->name_en : $product->nama_id }}" class="w-full h-auto rounded-xl shadow-lg">
                         </div>
 
                         <!-- Kolom Detail -->
                         <div data-aos="fade-up">
-                            <h1 class="text-3xl sm:text-4xl font-display text-white mb-4">{{ $product->name }}</h1>
-                            <div class="text-gray-500 text-sm sm:text-base mb-6 sm:mb-8">{!! $product->description !!}</div>
+                            <h1 class="text-3xl sm:text-4xl font-display text-white mb-4">{{ app()->getLocale() == 'en' ? $product->name_en : $product->nama_id }}</h1>
+                            <div class="text-gray-500 text-sm sm:text-base mb-6 sm:mb-8">{!! app()->getLocale() == 'en' ? $product->description_en : $product->deskripsi_id !!}</div>
 
                             <h3 class="text-xl sm:text-2xl font-display text-white mb-4 border-t border-gray-700 pt-6">@lang('messages.technical_specifications')</h3>
                             <div class="overflow-x-auto">
@@ -137,7 +137,7 @@
                             </div>
 
                             <div class="mt-8 sm:mt-10">
-                                <a href="https://wa.me/{{ $settings['whatsapp_number'] ?? '' }}?text=Halo,%20saya%20tertarik%20untuk%20memesan%20{{ urlencode($product->name) }}." target="_blank" class="w-full text-center bg-amber-500 text-gray-900 font-bold py-3 px-6 sm:py-4 sm:px-8 rounded-full text-base sm:text-lg hover:bg-amber-400 transition-all duration-300">
+                                <a href="https://wa.me/{{ $settings['whatsapp_number'] ?? '' }}?text=Halo,%20saya%20tertarik%20untuk%20memesan%20{{ urlencode(app()->getLocale() == 'en' ? $product->name_en : $product->nama_id) }}." target="_blank" class="w-full text-center bg-amber-500 text-gray-900 font-bold py-3 px-6 sm:py-4 sm:px-8 rounded-full text-base sm:text-lg hover:bg-amber-400 transition-all duration-300">
                                     @lang('messages.request_quote')
                                 </a>
                             </div>

@@ -13,8 +13,14 @@ return new class extends Migration
     {
         Schema::create('process_steps', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description');
+            // Kolom untuk Bahasa Indonesia (default)
+            $table->string('judul_id');
+            $table->text('deskripsi_id');
+            
+            // Kolom untuk Bahasa Inggris
+            $table->string('title_en')->nullable();
+            $table->text('description_en')->nullable();
+            
             $table->integer('order')->default(0);
             $table->timestamps();
         });

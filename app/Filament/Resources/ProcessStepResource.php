@@ -20,10 +20,31 @@ class ProcessStepResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
-                    ->required(),
-                Forms\Components\Textarea::make('description')
-                    ->required(),
+                Forms\Components\Tabs::make('Bahasa')
+                    ->tabs([
+                        // Tab Bahasa Indonesia
+                        Forms\Components\Tabs\Tab::make('Bahasa Indonesia')
+                            ->schema([
+                                Forms\Components\TextInput::make('judul_id')
+                                    ->label('Judul')
+                                    ->required(),
+                                Forms\Components\Textarea::make('deskripsi_id')
+                                    ->label('Deskripsi')
+                                    ->required(),
+                            ]),
+                            
+                        // Tab English
+                        Forms\Components\Tabs\Tab::make('English')
+                            ->schema([
+                                Forms\Components\TextInput::make('title_en')
+                                    ->label('Title')
+                                    ->nullable(),
+                                Forms\Components\Textarea::make('description_en')
+                                    ->label('Description')
+                                    ->nullable(),
+                            ]),
+                    ])->columnSpanFull(),
+
                 Forms\Components\TextInput::make('order')
                     ->required()
                     ->numeric()
@@ -35,8 +56,15 @@ class ProcessStepResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('judul_id')
+                    ->label('Judul (ID)')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('title_en')
+                    ->label('Title (EN)')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('order')
                     ->sortable(),
             ])

@@ -2,17 +2,31 @@
 
 namespace App\Models;
 
+use App\Traits\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Advantage extends Model
 {
-    use HasFactory;
+    use HasFactory, HasTranslations;
 
     protected $fillable = [
-        'title',
-        'description',
+        'judul_id',
+        'title_en',
+        'deskripsi_id',
+        'description_en',
         'icon',
         'order',
     ];
+
+    // Accessor untuk nilai berdasarkan bahasa
+    public function getTitleAttribute()
+    {
+        return $this->title();
+    }
+
+    public function getDescriptionAttribute()
+    {
+        return $this->description();
+    }
 }

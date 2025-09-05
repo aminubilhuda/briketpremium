@@ -123,8 +123,8 @@
                             <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
                                 <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}" class="w-full h-48 sm:h-56 object-cover">
                                 <div class="p-4 sm:p-6 flex flex-col flex-grow">
-                                    <h3 class="text-xl sm:text-2xl font-display text-white mb-2">{{ $product->name }}</h3>
-                                    <div class="text-gray-500 text-sm sm:text-base mb-4 line-clamp-3">{!! $product->description !!}</div>
+                                    <h3 class="text-xl sm:text-2xl font-display text-white mb-2">{{ app()->getLocale() == 'en' ? $product->name_en : $product->nama_id }}</h3>
+                                    <div class="text-gray-500 text-sm sm:text-base mb-4 line-clamp-3">{!! app()->getLocale() == 'en' ? $product->description_en : $product->deskripsi_id !!}</div>
                                     <a href="{{ route('product.detail', $product->slug) }}" class="inline-block bg-transparent border border-amber-500 text-amber-500 font-semibold py-2 px-4 sm:px-6 rounded-full hover:bg-amber-500 hover:text-gray-900 transition-all duration-300 self-start mt-auto text-sm sm:text-base">
                                         @lang('messages.view_details')
                                     </a>
@@ -166,8 +166,8 @@
                             {{ $timeline->year }}
                         </div>
                         <div class="w-full {{ $index % 2 == 0 ? 'md:w-1/2 md:pr-8 md:text-right' : 'md:w-1/2 md:pl-8' }} text-center md:text-left p-4 rounded-lg bg-gray-900 shadow-lg border border-gray-700">
-                            <h3 class="text-xl font-bold text-white mb-1">{{ $timeline->title }}</h3>
-                            <p class="text-gray-400 text-sm">{{ $timeline->description }}</p>
+                            <h3 class="text-xl font-bold text-white mb-1">{{ app()->getLocale() == 'en' ? $timeline->title_en : $timeline->judul_id }}</h3>
+                            <p class="text-gray-400 text-sm">{{ app()->getLocale() == 'en' ? $timeline->description_en : $timeline->deskripsi_id }}</p>
                         </div>
                     </div>
                     @empty
@@ -207,8 +207,8 @@
                     @forelse($processSteps as $index => $step)
                     <div data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
                         <div class="bg-gray-800 border-2 border-amber-500/30 text-amber-500 w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full flex items-center justify-center mb-4"><span class="text-3xl sm:text-4xl font-display">{{ $index + 1 }}</span></div>
-                        <h3 class="text-xl font-bold text-white mb-2">{{ $step->title }}</h3>
-                        <p class="text-gray-400 text-sm sm:text-base">{{ $step->description }}</p>
+                        <h3 class="text-xl font-bold text-white mb-2">{{ app()->getLocale() == 'en' ? $step->title_en : $step->judul_id }}</h3>
+                        <p class="text-gray-400 text-sm sm:text-base">{{ app()->getLocale() == 'en' ? $step->description_en : $step->deskripsi_id }}</p>
                     </div>
                     @empty
                     <p class="text-center text-gray-400 col-span-full">@lang('messages.no_process_steps')</p>
@@ -252,8 +252,8 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 sm:h-8 sm:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
                             @endif
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">{{ $advantage->title }}</h3>
-                        <p class="text-gray-400 text-sm sm:text-base">{{ $advantage->description }}</p>
+                        <h3 class="text-xl font-bold text-white mb-2">{{ app()->getLocale() == 'en' ? $advantage->title_en : $advantage->judul_id }}</h3>
+                        <p class="text-gray-400 text-sm sm:text-base">{{ app()->getLocale() == 'en' ? $advantage->description_en : $advantage->deskripsi_id }}</p>
                     </div>
                     @empty
                     <p class="text-center text-gray-400 col-span-full">@lang('messages.no_advantages')</p>
