@@ -8,43 +8,43 @@
                 @if(isset($settings['site_logo_path']) && $settings['site_logo_path'])
                     <img src="{{ asset('storage/' . $settings['site_logo_path']) }}" alt="{{ $settings['site_name'] ?? 'Logo' }}" class="h-10 w-auto">
                 @else
-                    {{ Str::before($settings['site_name'] ?? 'Briket Kita', ' ') }}<span class="text-amber-400">{{ Str::after($settings['site_name'] ?? 'Briket Kita', ' ') }}</span>.
+                    {{ Str::before($settings['site_name'] ?? 'Briket Kita', ' ') }}<span class="text-[#f48934]">{{ Str::after($settings['site_name'] ?? 'Briket Kita', ' ') }}</span>.
                 @endif
             </a>
 
             <!-- Desktop Nav -->
             <nav class="hidden md:flex items-center space-x-6 lg:space-x-8">
-                <a href="#hero" class="hover:text-amber-400 transition-colors">@lang('messages.nav_home')</a>
-                <a href="#tentang" class="hover:text-amber-400 transition-colors">@lang('messages.nav_about')</a>
-                <a href="#produk" class="hover:text-amber-400 transition-colors">@lang('messages.nav_products')</a>
-                <a href="#proses" class="hover:text-amber-400 transition-colors">@lang('messages.nav_process')</a>
-                <a href="#galeri" class="hover:text-amber-400 transition-colors">@lang('messages.nav_gallery')</a>
-                <a href="#kontak" class="hover:text-amber-400 transition-colors">@lang('messages.nav_contact')</a>
+                <a href="#hero" class="hover:text-[#f48934] transition-colors">@lang('messages.nav_home')</a>
+                <a href="#tentang" class="hover:text-[#f48934] transition-colors">@lang('messages.nav_about')</a>
+                <a href="#produk" class="hover:text-[#f48934] transition-colors">@lang('messages.nav_products')</a>
+                <a href="#proses" class="hover:text-[#f48934] transition-colors">@lang('messages.nav_process')</a>
+                <a href="#galeri" class="hover:text-[#f48934] transition-colors">@lang('messages.nav_gallery')</a>
+                <a href="#kontak" class="hover:text-[#f48934] transition-colors">@lang('messages.nav_contact')</a>
             </nav>
 
             <!-- Desktop CTA -->
             <div class="hidden md:flex items-center space-x-4">
                 @if(isset($settings['shopee_url']) && $settings['shopee_url'])
-                    <a href="{{ $settings['shopee_url'] }}" target="_blank" class="text-white hover:text-amber-400" title="Kunjungi Toko Shopee">
+                    <a href="{{ $settings['shopee_url'] }}" target="_blank" class="text-white hover:text-[#f48934]" title="Kunjungi Toko Shopee">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
                     </a>
                 @endif
                 @if(isset($settings['tokopedia_url']) && $settings['tokopedia_url'])
-                    <a href="{{ $settings['tokopedia_url'] }}" target="_blank" class="text-white hover:text-amber-400" title="Kunjungi Toko Tokopedia">
+                    <a href="{{ $settings['tokopedia_url'] }}" target="_blank" class="text-white hover:text-[#f48934]" title="Kunjungi Toko Tokopedia">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                         </svg>
                     </a>
                 @endif
-                <a href="https://wa.me/{{ $settings['whatsapp_number'] ?? '' }}?text=Halo,%20saya%20tertarik%20dengan%20produk%20briket%20Anda." target="_blank" class="bg-amber-500 text-gray-900 font-bold py-2 px-5 rounded-full hover:bg-amber-400 transition-all duration-300 transform hover:scale-105 text-sm">
+                <a href="https://wa.me/{{ $settings['whatsapp_number'] ?? '' }}?text=Halo,%20saya%20tertarik%20dengan%20produk%20briket%20Anda." target="_blank" class="bg-[#f48934] text-gray-900 font-bold py-2 px-5 rounded-full hover:bg-amber-400 transition-all duration-300 transform hover:scale-105 text-sm">
                     @lang('messages.order_now')
                 </a>
                 <div class="flex space-x-2 text-sm font-semibold">
-                    <a href="{{ route('language.switch', ['locale' => 'en']) }}" class="{{ app()->getLocale() == 'en' ? 'text-amber-400' : 'text-gray-400 hover:text-white' }} transition-colors" target="_self">EN</a>
+                    <a href="{{ route('language.switch', ['locale' => 'en']) }}" class="{{ app()->getLocale() == 'en' ? 'text-[#f48934]' : 'text-gray-400 hover:text-white' }} transition-colors" target="_self">EN</a>
                     <span class="text-gray-500">|</span>
-                    <a href="{{ route('language.switch', ['locale' => 'id']) }}" class="{{ app()->getLocale() == 'id' ? 'text-amber-400' : 'text-gray-400 hover:text-white' }} transition-colors" target="_self">ID</a>
+                    <a href="{{ route('language.switch', ['locale' => 'id']) }}" class="{{ app()->getLocale() == 'id' ? 'text-[#f48934]' : 'text-gray-400 hover:text-white' }} transition-colors" target="_self">ID</a>
                 </div>
             </div>
 
@@ -59,26 +59,26 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-gray-800/95 backdrop-blur-sm">
             <nav class="flex flex-col items-center space-y-4 py-8">
-                <a href="#hero" class="text-lg hover:text-amber-400 transition-colors">@lang('messages.nav_home')</a>
-                <a href="#tentang" class="text-lg hover:text-amber-400 transition-colors">@lang('messages.nav_about')</a>
-                <a href="#produk" class="text-lg hover:text-amber-400 transition-colors">@lang('messages.nav_products')</a>
-                <a href="#proses" class="text-lg hover:text-amber-400 transition-colors">@lang('messages.nav_process')</a>
-                <a href="#galeri" class="text-lg hover:text-amber-400 transition-colors">@lang('messages.nav_gallery')</a>
-                <a href="#kontak" class="text-lg hover:text-amber-400 transition-colors">@lang('messages.nav_contact')</a>
+                <a href="#hero" class="text-lg hover:text-[#f48934] transition-colors">@lang('messages.nav_home')</a>
+                <a href="#tentang" class="text-lg hover:text-[#f48934] transition-colors">@lang('messages.nav_about')</a>
+                <a href="#produk" class="text-lg hover:text-[#f48934] transition-colors">@lang('messages.nav_products')</a>
+                <a href="#proses" class="text-lg hover:text-[#f48934] transition-colors">@lang('messages.nav_process')</a>
+                <a href="#galeri" class="text-lg hover:text-[#f48934] transition-colors">@lang('messages.nav_gallery')</a>
+                <a href="#kontak" class="text-lg hover:text-[#f48934] transition-colors">@lang('messages.nav_contact')</a>
                 <div class="pt-4 border-t border-gray-700 w-full flex flex-col items-center space-y-4">
-                    <a href="https://wa.me/{{ $settings['whatsapp_number'] ?? '' }}?text=Halo,%20saya%20tertarik%20dengan%20produk%20briket%20Anda." target="_blank" class="bg-amber-500 text-gray-900 font-bold py-3 px-8 rounded-full hover:bg-amber-400 transition-all duration-300 w-full max-w-xs text-center">
+                    <a href="https://wa.me/{{ $settings['whatsapp_number'] ?? '' }}?text=Halo,%20saya%20tertarik%20dengan%20produk%20briket%20Anda." target="_blank" class="bg-[#f48934] text-gray-900 font-bold py-3 px-8 rounded-full hover:bg-amber-400 transition-all duration-300 w-full max-w-xs text-center">
                         @lang('messages.order_now')
                     </a>
                     <div class="flex items-center space-x-4">
                         @if(isset($settings['shopee_url']) && $settings['shopee_url'])
-                            <a href="{{ $settings['shopee_url'] }}" target="_blank" class="text-white hover:text-amber-400" title="Kunjungi Toko Shopee">
+                            <a href="{{ $settings['shopee_url'] }}" target="_blank" class="text-white hover:text-[#f48934]" title="Kunjungi Toko Shopee">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                                 </svg>
                             </a>
                         @endif
                         @if(isset($settings['tokopedia_url']) && $settings['tokopedia_url'])
-                            <a href="{{ $settings['tokopedia_url'] }}" target="_blank" class="text-white hover:text-amber-400" title="Kunjungi Toko Tokopedia">
+                            <a href="{{ $settings['tokopedia_url'] }}" target="_blank" class="text-white hover:text-[#f48934]" title="Kunjungi Toko Tokopedia">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                                 </svg>
@@ -86,9 +86,9 @@
                         @endif
                     </div>
                     <div class="flex space-x-2 text-base font-semibold">
-                        <a href="{{ route('language.switch', ['locale' => 'en']) }}" class="{{ app()->getLocale() == 'en' ? 'text-amber-400' : 'text-gray-400 hover:text-white' }} transition-colors" target="_self">EN</a>
+                        <a href="{{ route('language.switch', ['locale' => 'en']) }}" class="{{ app()->getLocale() == 'en' ? 'text-[#f48934]' : 'text-gray-400 hover:text-white' }} transition-colors" target="_self">EN</a>
                         <span class="text-gray-500">|</span>
-                        <a href="{{ route('language.switch', ['locale' => 'id']) }}" class="{{ app()->getLocale() == 'id' ? 'text-amber-400' : 'text-gray-400 hover:text-white' }} transition-colors" target="_self">ID</a>
+                        <a href="{{ route('language.switch', ['locale' => 'id']) }}" class="{{ app()->getLocale() == 'id' ? 'text-[#f48934]' : 'text-gray-400 hover:text-white' }} transition-colors" target="_self">ID</a>
                     </div>
                 </div>
             </nav>
@@ -102,7 +102,7 @@
             <div class="relative text-center text-white p-6 z-10" data-aos="fade-up">
                 <h1 class="text-4xl sm:text-5xl md:text-7xl font-display mb-4">{{ $settings['hero_title'] ?? __('messages.hero_title') }}</h1>
                 <p class="text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-8">{{ $settings['hero_subtitle'] ?? __('messages.hero_subtitle') }}</p>
-                <a href="#produk" class="bg-amber-500 text-gray-900 font-bold py-3 px-8 rounded-full text-lg hover:bg-amber-400 transition-all duration-300 transform hover:scale-105">
+                <a href="#produk" class="bg-[#f48934] text-gray-900 font-bold py-3 px-8 rounded-full text-lg hover:bg-amber-400 transition-all duration-300 transform hover:scale-105">
                     @lang('messages.hero_button')
                 </a>
             </div>
@@ -125,7 +125,7 @@
                                 <div class="p-4 sm:p-6 flex flex-col flex-grow">
                                     <h3 class="text-xl sm:text-2xl font-display text-white mb-2">{{ app()->getLocale() == 'en' ? $product->name_en : $product->nama_id }}</h3>
                                     <div class="text-gray-500 text-sm sm:text-base mb-4 line-clamp-3">{!! app()->getLocale() == 'en' ? $product->description_en : $product->deskripsi_id !!}</div>
-                                    <a href="{{ route('product.detail', $product->slug) }}" class="inline-block bg-transparent border border-amber-500 text-amber-500 font-semibold py-2 px-4 sm:px-6 rounded-full hover:bg-amber-500 hover:text-gray-900 transition-all duration-300 self-start mt-auto text-sm sm:text-base">
+                                    <a href="{{ route('product.detail', $product->slug) }}" class="inline-block bg-transparent border border--[#f48934] text--[#f48934] font-semibold py-2 px-4 sm:px-6 rounded-full hover:bg-[#f48934] hover:text-gray-900 transition-all duration-300 self-start mt-auto text-sm sm:text-base">
                                         @lang('messages.view_details')
                                     </a>
                                 </div>
@@ -158,11 +158,11 @@
                 </div>
                 <div class="relative max-w-2xl mx-auto">
                     <!-- Garis Timeline -->
-                    <div class="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-amber-500/30 hidden md:block"></div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-[#f48934]/30 hidden md:block"></div>
                     @forelse($timelines as $index => $timeline)
                     <!-- Item Timeline -->
                     <div data-aos="fade-up" class="relative mb-10 sm:mb-12 flex flex-col {{ $index % 2 == 0 ? 'md:flex-row' : 'md:flex-row-reverse' }} items-center md:items-start">
-                        <div class="md:relative w-10 h-10 sm:w-12 sm:h-12 bg-amber-500 rounded-full border-2 border-amber-500 flex-shrink-0 z-10 flex items-center justify-center text-gray-900 font-bold text-sm sm:text-base {{ $index % 2 == 0 ? 'md:mr-4' : 'md:ml-4' }} mb-2 md:mb-0 transform transition-transform duration-300 hover:scale-110">
+                        <div class="md:relative w-10 h-10 sm:w-12 sm:h-12 bg-[#f48934] rounded-full border-2 border-[#f48934] flex-shrink-0 z-10 flex items-center justify-center text-gray-900 font-bold text-sm sm:text-base {{ $index % 2 == 0 ? 'md:mr-4' : 'md:ml-4' }} mb-2 md:mb-0 transform transition-transform duration-300 hover:scale-110">
                             {{ $timeline->year }}
                         </div>
                         <div class="w-full {{ $index % 2 == 0 ? 'md:w-1/2 md:pr-8 md:text-right' : 'md:w-1/2 md:pl-8' }} text-center md:text-left p-4 rounded-lg bg-gray-900 shadow-lg border border-gray-700">
@@ -206,7 +206,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 text-center">
                     @forelse($processSteps as $index => $step)
                     <div data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
-                        <div class="bg-gray-800 border-2 border-amber-500/30 text-amber-500 w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full flex items-center justify-center mb-4"><span class="text-3xl sm:text-4xl font-display">{{ $index + 1 }}</span></div>
+                        <div class="bg-gray-800 border-2 border-[#f48934]/30 text-[#f48934] w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full flex items-center justify-center mb-4"><span class="text-3xl sm:text-4xl font-display">{{ $index + 1 }}</span></div>
                         <h3 class="text-xl font-bold text-white mb-2">{{ app()->getLocale() == 'en' ? $step->title_en : $step->judul_id }}</h3>
                         <p class="text-gray-400 text-sm sm:text-base">{{ app()->getLocale() == 'en' ? $step->description_en : $step->deskripsi_id }}</p>
                     </div>
@@ -319,7 +319,7 @@
                                 <img src="{{ asset('storage/' . $advantage->image_path) }}" alt="{{ app()->getLocale() == 'en' ? $advantage->title_en : $advantage->judul_id }}" class="w-20 h-20 sm:w-24 sm:h-24 object-cover mx-auto rounded-lg">
                             </div>
                         @else
-                            <div class="bg-amber-500 text-gray-900 w-14 h-14 sm:w-16 sm:h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                            <div class="bg-[#f48934] text-gray-900 w-14 h-14 sm:w-16 sm:h-16 mx-auto rounded-full flex items-center justify-center mb-4">
                                 @if($advantage->icon)
                                     {!! $advantage->icon !!}
                                 @else
@@ -356,32 +356,32 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label for="name" class="block text-gray-400 mb-2">@lang('messages.contact_form_name')</label>
-                                <input type="text" id="name" name="name" value="{{ old('name') }}" class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-amber-500" required>
+                                <input type="text" id="name" name="name" value="{{ old('name') }}" class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-[#f48934]" required>
                                 @error('name')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
                             </div>
                             <div>
                                 <label for="email" class="block text-gray-400 mb-2">@lang('messages.contact_form_email')</label>
-                                <input type="email" id="email" name="email" value="{{ old('email') }}" class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-amber-500" required>
+                                <input type="email" id="email" name="email" value="{{ old('email') }}" class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-[#f48934]" required>
                                 @error('email')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
                             </div>
                             <div>
                                 <label for="company" class="block text-gray-400 mb-2">@lang('messages.contact_form_company')</label>
-                                <input type="text" id="company" name="company" value="{{ old('company') }}" class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-amber-500" required>
+                                <input type="text" id="company" name="company" value="{{ old('company') }}" class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-[#f48934]" required>
                                 @error('company')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
                             </div>
                             <div>
                                 <label for="country" class="block text-gray-400 mb-2">@lang('messages.contact_form_country')</label>
-                                <input type="text" id="country" name="country" value="{{ old('country') }}" class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-amber-500" required>
+                                <input type="text" id="country" name="country" value="{{ old('country') }}" class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-[#f48934]" required>
                                 @error('country')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
                             </div>
                         </div>
                         <div>
                             <label for="message" class="block text-gray-400 mb-2">@lang('messages.contact_form_message')</label>
-                            <textarea id="message" name="message" rows="5" class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-amber-500" required>{{ old('message') }}</textarea>
+                            <textarea id="message" name="message" rows="5" class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-[#f48934]" required>{{ old('message') }}</textarea>
                             @error('message')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="bg-amber-500 text-gray-900 font-bold py-3 px-12 rounded-full hover:bg-amber-400 transition-all duration-300 transform hover:scale-105">
+                            <button type="submit" class="bg-[#f48934] text-gray-900 font-bold py-3 px-12 rounded-full hover:bg-amber-400 transition-all duration-300 transform hover:scale-105">
                                 @lang('messages.contact_form_submit')
                             </button>
                         </div>
@@ -400,7 +400,7 @@
                         @if(isset($settings['site_logo_path']) && $settings['site_logo_path'])
                             <img src="{{ asset('storage/' . $settings['site_logo_path']) }}" alt="{{ $settings['site_name'] ?? 'Logo' }}" class="h-10 w-auto md:mx-0 mx-auto">
                         @else
-                            {{ Str::before($settings['site_name'] ?? 'Briket Kita', ' ') }}<span class="text-amber-400">{{ Str::after($settings['site_name'] ?? 'Briket Kita', ' ') }}</span>.
+                            {{ Str::before($settings['site_name'] ?? 'Briket Kita', ' ') }}<span class="text-[#f48934]">{{ Str::after($settings['site_name'] ?? 'Briket Kita', ' ') }}</span>.
                         @endif
                     </h3>
                     <p class="text-gray-400 mt-2 text-sm sm:text-base">{{ $settings['hero_subtitle'] ?? __('messages.hero_subtitle') }}</p>
@@ -415,39 +415,39 @@
                 <div>
                     <h4 class="text-lg font-semibold text-white">@lang('messages.footer_quick_links')</h4>
                     <ul class="mt-4 space-y-2">
-                        <li><a href="#produk" class="text-gray-400 hover:text-amber-400 text-sm sm:text-base">@lang('messages.nav_products')</a></li>
-                        <li><a href="#video" class="text-gray-400 hover:text-amber-400 text-sm sm:text-base">@lang('messages.nav_process')</a></li>
-                        <li><a href="#keunggulan" class="text-gray-400 hover:text-amber-400 text-sm sm:text-base">@lang('messages.why_choose_us_title')</a></li>
+                        <li><a href="#produk" class="text-gray-400 hover:text-[#f48934] text-sm sm:text-base">@lang('messages.nav_products')</a></li>
+                        <li><a href="#video" class="text-gray-400 hover:text-[#f48934] text-sm sm:text-base">@lang('messages.nav_process')</a></li>
+                        <li><a href="#keunggulan" class="text-gray-400 hover:text-[#f48934] text-sm sm:text-base">@lang('messages.why_choose_us_title')</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold text-white">@lang('messages.nav_contact')</h4>
                     <p class="text-gray-400 mt-4 text-sm sm:text-base">{{ $settings['company_address'] ?? 'Alamat belum diatur' }}</p>
                     <p class="text-gray-400 text-sm sm:text-base">Email: {{ $settings['company_email'] ?? 'sales@briketkita.com' }}</p>
-                    <p class="text-amber-400 font-bold mt-2 text-sm sm:text-base">WA: {{ $settings['whatsapp_number'] ?? '' }}</p>
+                    <p class="text-[#f48934] font-bold mt-2 text-sm sm:text-base">WA: {{ $settings['whatsapp_number'] ?? '' }}</p>
                     <div class="flex justify-center md:justify-start space-x-4 mt-4">
                         @if(isset($settings['facebook_url']) && $settings['facebook_url'])
-                            <a href="{{ $settings['facebook_url'] }}" target="_blank" class="text-gray-400 hover:text-amber-400 transition-colors">
+                            <a href="{{ $settings['facebook_url'] }}" target="_blank" class="text-gray-400 hover:text-[#f48934] transition-colors">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                         @endif
                         @if(isset($settings['instagram_url']) && $settings['instagram_url'])
-                            <a href="{{ $settings['instagram_url'] }}" target="_blank" class="text-gray-400 hover:text-amber-400 transition-colors">
+                            <a href="{{ $settings['instagram_url'] }}" target="_blank" class="text-gray-400 hover:text-[#f48934] transition-colors">
                                 <i class="fab fa-instagram"></i>
                             </a>
                         @endif
                         @if(isset($settings['linkedin_url']) && $settings['linkedin_url'])
-                            <a href="{{ $settings['linkedin_url'] }}" target="_blank" class="text-gray-400 hover:text-amber-400 transition-colors">
+                            <a href="{{ $settings['linkedin_url'] }}" target="_blank" class="text-gray-400 hover:text-[#f48934] transition-colors">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
                         @endif
                         @if(isset($settings['tiktok_url']) && $settings['tiktok_url'])
-                            <a href="{{ $settings['tiktok_url'] }}" target="_blank" class="text-gray-400 hover:text-amber-400 transition-colors">
+                            <a href="{{ $settings['tiktok_url'] }}" target="_blank" class="text-gray-400 hover:text-[#f48934] transition-colors">
                                 <i class="fab fa-tiktok"></i>
                             </a>
                         @endif
                         @if(isset($settings['x_url']) && $settings['x_url'])
-                            <a href="{{ $settings['x_url'] }}" target="_blank" class="text-gray-400 hover:text-amber-400 transition-colors">
+                            <a href="{{ $settings['x_url'] }}" target="_blank" class="text-gray-400 hover:text-[#f48934] transition-colors">
                                 <i class="fab fa-x-twitter"></i>
                             </a>
                         @endif
