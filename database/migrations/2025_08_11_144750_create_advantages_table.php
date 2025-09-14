@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('description_en')->nullable();
             
             $table->string('icon')->nullable(); // Untuk menyimpan nama ikon atau kelas ikon
+            $table->string('image_path')->nullable(); // Untuk menyimpan path gambar
             $table->integer('order')->default(0);
             $table->timestamps();
         });

@@ -20,6 +20,7 @@ class AdvantagesSeeder extends Seeder
                 'description_en' => 'Our charcoal briquettes are made from high-quality materials with strict standards.',
                 
                 'icon' => 'heroicon-o-star',
+                'image_path' => null, // Akan diisi melalui admin panel
                 'order' => 1,
             ],
             [
@@ -32,6 +33,7 @@ class AdvantagesSeeder extends Seeder
                 'description_en' => 'Provides stable and long-lasting heat for various purposes.',
                 
                 'icon' => 'heroicon-o-fire',
+                'image_path' => null, // Akan diisi melalui admin panel
                 'order' => 2,
             ],
             [
@@ -44,6 +46,7 @@ class AdvantagesSeeder extends Seeder
                 'description_en' => 'Produced from natural and sustainable materials to preserve the environment.',
                 
                 'icon' => 'heroicon-o-globe-alt',
+                'image_path' => null, // Akan diisi melalui admin panel
                 'order' => 3,
             ],
         ];

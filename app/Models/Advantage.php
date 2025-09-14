@@ -16,6 +16,7 @@ class Advantage extends Model
         'deskripsi_id',
         'description_en',
         'icon',
+        'image_path',
         'order',
     ];
 

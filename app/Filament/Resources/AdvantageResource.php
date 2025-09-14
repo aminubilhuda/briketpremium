@@ -48,6 +48,12 @@ class AdvantageResource extends Resource
                 Forms\Components\TextInput::make('icon')
                     ->label('Nama Ikon (SVG atau Heroicon)')
                     ->nullable(),
+                Forms\Components\FileUpload::make('image_path')
+                    ->label('Gambar')
+                    ->directory('advantages')
+                    ->image()
+                    ->imageEditor()
+                    ->nullable(),
                 Forms\Components\TextInput::make('order')
                     ->required()
                     ->numeric()
@@ -68,6 +74,8 @@ class AdvantageResource extends Resource
                 Tables\Columns\TextColumn::make('icon')
                     ->label('Ikon')
                     ->searchable(),
+                Tables\Columns\ImageColumn::make('image_path')
+                    ->label('Gambar'),
                 Tables\Columns\TextColumn::make('order')
                     ->sortable(),
             ])

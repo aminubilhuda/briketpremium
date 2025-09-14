@@ -314,13 +314,19 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 text-center">
                     @forelse($advantages as $index => $advantage)
                     <div data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
-                        <div class="bg-amber-500 text-gray-900 w-14 h-14 sm:w-16 sm:h-16 mx-auto rounded-full flex items-center justify-center mb-4">
-                            @if($advantage->icon)
-                                {!! $advantage->icon !!}
-                            @else
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 sm:h-8 sm:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-                            @endif
-                        </div>
+                        @if($advantage->image_path)
+                            <div class="mb-4">
+                                <img src="{{ asset('storage/' . $advantage->image_path) }}" alt="{{ app()->getLocale() == 'en' ? $advantage->title_en : $advantage->judul_id }}" class="w-20 h-20 sm:w-24 sm:h-24 object-cover mx-auto rounded-lg">
+                            </div>
+                        @else
+                            <div class="bg-amber-500 text-gray-900 w-14 h-14 sm:w-16 sm:h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                                @if($advantage->icon)
+                                    {!! $advantage->icon !!}
+                                @else
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 sm:h-8 sm:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                @endif
+                            </div>
+                        @endif
                         <h3 class="text-xl font-bold text-white mb-2">{{ app()->getLocale() == 'en' ? $advantage->title_en : $advantage->judul_id }}</h3>
                         <p class="text-gray-400 text-sm sm:text-base">{{ app()->getLocale() == 'en' ? $advantage->description_en : $advantage->deskripsi_id }}</p>
                     </div>
