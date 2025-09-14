@@ -15,10 +15,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             AdminUserSeeder::class,
-            ProductSeeder::class,
-            GallerySeeder::class,
+            // ProductSeeder::class,
+            // GallerySeeder::class,
             SiteSettingSeeder::class,
-            AdvantagesSeeder::class,
+            // AdvantagesSeeder::class,
         ]);
     }
 }
